@@ -31,10 +31,9 @@ namespace ShopKhanh.Model.Models
         [MaxLength(250)]
         public string PaymentMethod { set; get; }
 
-        [MaxLength(50)]
+     
         public DateTime? CreatedDate { set; get; }
-
-        public string CreateBy { set; get; }
+        public string CreatedBy { set; get; }
         public string PaymentStatus { set; get; }
         public bool Status { set; get; }
         public virtual IEnumerable<OrderDetail> OrderDetails { set; get; }

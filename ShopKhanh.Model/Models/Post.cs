@@ -1,4 +1,6 @@
 ﻿using ShopKhanh.Model.Abstract;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -35,5 +37,7 @@ namespace ShopKhanh.Model.Models
 
         [ForeignKey("CategoryID")]
         public virtual PostCategory PostCategory { set; get; }
+       
+        public virtual IEnumerable<PostTag> PostTags { set; get; }
     }
 }
