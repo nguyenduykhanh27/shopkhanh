@@ -64,6 +64,14 @@
     <Compile Include="Migrations\201701300407399_AddErrorTable.Designer.cs">
       <DependentUpon>201701300407399_AddErrorTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701310731325_TablePostCategories.cs" />
+    <Compile Include="Migrations\201701310731325_TablePostCategories.Designer.cs">
+      <DependentUpon>201701310731325_TablePostCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701310740458_TablePosts.cs" />
+    <Compile Include="Migrations\201701310740458_TablePosts.Designer.cs">
+      <DependentUpon>201701310740458_TablePosts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -108,6 +116,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701300407399_AddErrorTable.resx">
       <DependentUpon>201701300407399_AddErrorTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701310731325_TablePostCategories.resx">
+      <DependentUpon>201701310731325_TablePostCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701310740458_TablePosts.resx">
+      <DependentUpon>201701310740458_TablePosts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
