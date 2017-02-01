@@ -1,4 +1,5 @@
-﻿using ShopKhanh.Model.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using ShopKhanh.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ShopKhanh.Data
 {
-    public class ShopKhanhDbContext : DbContext
+    public class ShopKhanhDbContext : IdentityDbContext<ApplicationUser>
     {
         public ShopKhanhDbContext() : base("KhanhShopConnection")
         {
@@ -33,9 +34,15 @@ namespace ShopKhanh.Data
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
 
         public DbSet<Error> Errors { set; get; }
+        public static ShopKhanhDbContext Create()
+        {
+            return new ShopKhanhDbContext();
+        }
         protected override void OnModelCreating(DbModelBuilder builder)
         {
-           
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId ,i.RoleId});
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
+            
         }
 
 
