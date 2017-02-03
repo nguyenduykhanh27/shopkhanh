@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Trang quản trị</title>
     <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link href="~/Assets/admin/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome -->
@@ -24,19 +23,19 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini" ng-app="tedushop">
+<body class="hold-transition skin-blue sidebar-mini" ng-app="khanhshop">
     <!-- Site wrapper -->
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-            <a href="#" class="logo">
+            <a href="../../index2.html" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>A</b>LT</span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><b>Admin</b>LTE</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
-            <nav class="navbar navbar-static-top" role="navigation">
+            <nav class="navbar navbar-static-top">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -61,7 +60,7 @@
                                             <!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="/Assets/admin/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                    <img src="~/Assets/admin/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Support Team
@@ -69,7 +68,8 @@
                                                 </h4>
                                                 <p>Why not buy a new awesome theme?</p>
                                             </a>
-                                        </li><!-- end message -->
+                                        </li>
+                                        <!-- end message -->
                                     </ul>
                                 </li>
                                 <li class="footer"><a href="#">See All Messages</a></li>
@@ -120,7 +120,8 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                        </li><!-- end task item -->
+                                        </li>
+                                        <!-- end task item -->
                                     </ul>
                                 </li>
                                 <li class="footer">
@@ -145,15 +146,18 @@
                                 </li>
                                 <!-- Menu Body -->
                                 <li class="user-body">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
+                                    <div class="row">
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Followers</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Sales</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Friends</a>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
+                                    <!-- /.row -->
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
@@ -194,7 +198,9 @@
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
-                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
                         </span>
                     </div>
                 </form>
@@ -204,7 +210,10 @@
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a ui-sref="products"><i class="fa fa-circle-o"></i> Products</a></li>
@@ -215,7 +224,9 @@
                         <a href="#">
                             <i class="fa fa-files-o"></i>
                             <span>Layout Options</span>
-                            <span class="label label-primary pull-right">4</span>
+                            <span class="pull-right-container">
+                                <span class="label label-primary pull-right">4</span>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
@@ -226,14 +237,19 @@
                     </li>
                     <li>
                         <a href="../widgets.html">
-                            <i class="fa fa-th"></i> <span>Widgets</span> <small class="label pull-right bg-green">Hot</small>
+                            <i class="fa fa-th"></i> <span>Widgets</span>
+                            <span class="pull-right-container">
+                                <small class="label pull-right bg-green">Hot</small>
+                            </span>
                         </a>
                     </li>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-pie-chart"></i>
                             <span>Charts</span>
-                            <i class="fa fa-angle-left pull-right"></i>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
@@ -246,7 +262,9 @@
                         <a href="#">
                             <i class="fa fa-laptop"></i>
                             <span>UI Elements</span>
-                            <i class="fa fa-angle-left pull-right"></i>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
@@ -260,7 +278,9 @@
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-edit"></i> <span>Forms</span>
-                            <i class="fa fa-angle-left pull-right"></i>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
@@ -271,7 +291,9 @@
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-table"></i> <span>Tables</span>
-                            <i class="fa fa-angle-left pull-right"></i>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
@@ -281,19 +303,28 @@
                     <li>
                         <a href="../calendar.html">
                             <i class="fa fa-calendar"></i> <span>Calendar</span>
-                            <small class="label pull-right bg-red">3</small>
+                            <span class="pull-right-container">
+                                <small class="label pull-right bg-red">3</small>
+                                <small class="label pull-right bg-blue">17</small>
+                            </span>
                         </a>
                     </li>
                     <li>
                         <a href="../mailbox/mailbox.html">
                             <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                            <small class="label pull-right bg-yellow">12</small>
+                            <span class="pull-right-container">
+                                <small class="label pull-right bg-yellow">12</small>
+                                <small class="label pull-right bg-green">16</small>
+                                <small class="label pull-right bg-red">5</small>
+                            </span>
                         </a>
                     </li>
                     <li class="treeview active">
                         <a href="#">
                             <i class="fa fa-folder"></i> <span>Examples</span>
-                            <i class="fa fa-angle-left pull-right"></i>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
@@ -304,21 +335,34 @@
                             <li><a href="404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
                             <li><a href="500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
                             <li class="active"><a href="blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+                            <li><a href="pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-share"></i> <span>Multilevel</span>
-                            <i class="fa fa-angle-left pull-right"></i>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
                             <li>
-                                <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i> Level One
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
                                 <ul class="treeview-menu">
                                     <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
                                     <li>
-                                        <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
+                                        <a href="#">
+                                            <i class="fa fa-circle-o"></i> Level Two
+                                            <span class="pull-right-container">
+                                                <i class="fa fa-angle-left pull-right"></i>
+                                            </span>
+                                        </a>
                                         <ul class="treeview-menu">
                                             <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
                                             <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
@@ -341,13 +385,16 @@
         <!-- =============================================== -->
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <div ui-view></div>
-        </div><!-- /.content-wrapper -->
+          <div ui-view></div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
-                <b>Version</b> 2.3.0
+                <b>Version</b> 2.3.8
             </div>
-            <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+            reserved.
         </footer>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -363,7 +410,7 @@
                     <h3 class="control-sidebar-heading">Recent Activity</h3>
                     <ul class="control-sidebar-menu">
                         <li>
-                            <a href="javascript::;">
+                            <a href="javascript:void(0)">
                                 <i class="menu-icon fa fa-birthday-cake bg-red"></i>
                                 <div class="menu-info">
                                     <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
@@ -372,7 +419,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript::;">
+                            <a href="javascript:void(0)">
                                 <i class="menu-icon fa fa-user bg-yellow"></i>
                                 <div class="menu-info">
                                     <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
@@ -381,7 +428,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript::;">
+                            <a href="javascript:void(0)">
                                 <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
                                 <div class="menu-info">
                                     <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
@@ -390,7 +437,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript::;">
+                            <a href="javascript:void(0)">
                                 <i class="menu-icon fa fa-file-code-o bg-green"></i>
                                 <div class="menu-info">
                                     <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
@@ -398,11 +445,12 @@
                                 </div>
                             </a>
                         </li>
-                    </ul><!-- /.control-sidebar-menu -->
+                    </ul>
+                    <!-- /.control-sidebar-menu -->
                     <h3 class="control-sidebar-heading">Tasks Progress</h3>
                     <ul class="control-sidebar-menu">
                         <li>
-                            <a href="javascript::;">
+                            <a href="javascript:void(0)">
                                 <h4 class="control-sidebar-subheading">
                                     Custom Template Design
                                     <span class="label label-danger pull-right">70%</span>
@@ -413,7 +461,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript::;">
+                            <a href="javascript:void(0)">
                                 <h4 class="control-sidebar-subheading">
                                     Update Resume
                                     <span class="label label-success pull-right">95%</span>
@@ -424,7 +472,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript::;">
+                            <a href="javascript:void(0)">
                                 <h4 class="control-sidebar-subheading">
                                     Laravel Integration
                                     <span class="label label-warning pull-right">50%</span>
@@ -435,7 +483,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript::;">
+                            <a href="javascript:void(0)">
                                 <h4 class="control-sidebar-subheading">
                                     Back End Framework
                                     <span class="label label-primary pull-right">68%</span>
@@ -445,10 +493,13 @@
                                 </div>
                             </a>
                         </li>
-                    </ul><!-- /.control-sidebar-menu -->
-                </div><!-- /.tab-pane -->
+                    </ul>
+                    <!-- /.control-sidebar-menu -->
+                </div>
+                <!-- /.tab-pane -->
                 <!-- Stats tab content -->
-                <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->
+                <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+                <!-- /.tab-pane -->
                 <!-- Settings tab content -->
                 <div class="tab-pane" id="control-sidebar-settings-tab">
                     <form method="post">
@@ -461,7 +512,8 @@
                             <p>
                                 Some information about this general settings option
                             </p>
-                        </div><!-- /.form-group -->
+                        </div>
+                        <!-- /.form-group -->
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
                                 Allow mail redirect
@@ -470,7 +522,8 @@
                             <p>
                                 Other sets of options are available
                             </p>
-                        </div><!-- /.form-group -->
+                        </div>
+                        <!-- /.form-group -->
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
                                 Expose author name in posts
@@ -479,56 +532,62 @@
                             <p>
                                 Allow the user to show his name in blog posts
                             </p>
-                        </div><!-- /.form-group -->
+                        </div>
+                        <!-- /.form-group -->
                         <h3 class="control-sidebar-heading">Chat Settings</h3>
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
                                 Show me as online
                                 <input type="checkbox" class="pull-right" checked>
                             </label>
-                        </div><!-- /.form-group -->
+                        </div>
+                        <!-- /.form-group -->
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
                                 Turn off notifications
                                 <input type="checkbox" class="pull-right">
                             </label>
-                        </div><!-- /.form-group -->
+                        </div>
+                        <!-- /.form-group -->
                         <div class="form-group">
                             <label class="control-sidebar-subheading">
                                 Delete chat history
-                                <a href="javascript::;" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+                                <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
                             </label>
-                        </div><!-- /.form-group -->
+                        </div>
+                        <!-- /.form-group -->
                     </form>
-                </div><!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-pane -->
             </div>
-        </aside><!-- /.control-sidebar -->
+        </aside>
+        <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
              immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
-    </div><!-- ./wrapper -->
-    <!-- jQuery 2.1.4 -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 2.2.3 -->
 
     <script src="~/Assets/admin/libs/jquery/dist/jquery.js"></script>
-    <!-- Bootstrap 3.3.5 -->
+    <!-- Bootstrap 3.3.6 -->
     <script src="~/Assets/admin/libs/bootstrap/dist/js/bootstrap.js"></script>
-   
     <!-- SlimScroll -->
 
     <script src="~/Assets/admin/libs/slimscroll/jquery.slimscroll.js"></script>
     <!-- FastClick -->
     <script src="~/Assets/admin/libs/fastclick/lib/fastclick.js"></script>
     <!-- AdminLTE App -->
-    <script src="~/Assets/admin/js/app.min.js"></script>
+    <script src="/Assets/admin/js/app.min.js"></script>
+
     <!-- Begin embed angularJS -->
-    @*<script src="~/Assets/admin/libs/angular/angular.js"></script>
+    <script src="~/Assets/admin/libs/angular/angular.js"></script>
     <script src="~/Assets/admin/libs/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="~/app/shared/modules/tedushop.common.js"></script>
+    <script src="~/app/shared/modules/khanhshop.common.js"></script>
     <script src="~/app/components/products/products.module.js"></script>
     <script src="~/app/app.js"></script>
     <script src="~/app/components/products/productAddController.js"></script>
     <script src="~/app/components/products/productListController.js"></script>
-    <script src="~/app/components/home/homeController.js"></script>*@
-
+    <script src="~/app/components/home/homeController.js"></script>
 </body>
 </html>
