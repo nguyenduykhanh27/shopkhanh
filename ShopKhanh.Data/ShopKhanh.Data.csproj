@@ -88,6 +88,10 @@
     <Compile Include="Migrations\201701311012474_Changekey.Designer.cs">
       <DependentUpon>201701311012474_Changekey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702030900174_TableProductCategories.cs" />
+    <Compile Include="Migrations\201702030900174_TableProductCategories.Designer.cs">
+      <DependentUpon>201702030900174_TableProductCategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -144,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701311012474_Changekey.resx">
       <DependentUpon>201701311012474_Changekey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702030900174_TableProductCategories.resx">
+      <DependentUpon>201702030900174_TableProductCategories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,11 +1,7 @@
 ﻿using ShopKhanh.Data.Infrastructure;
 using ShopKhanh.Data.Repositories;
 using ShopKhanh.Model.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShopKhanh.Service
 {
@@ -22,6 +18,7 @@ namespace ShopKhanh.Service
         IEnumerable<PostCategory> GetAllByParentId(int parentId);
 
         PostCategory GetById(int id);
+
         void Save();
     }
 
@@ -38,7 +35,7 @@ namespace ShopKhanh.Service
 
         public PostCategory Add(PostCategory postCategory)
         {
-           return _postCategoryRepository.Add(postCategory);
+            return _postCategoryRepository.Add(postCategory);
         }
 
         public PostCategory Delete(int id)

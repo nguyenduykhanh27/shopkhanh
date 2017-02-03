@@ -2,7 +2,11 @@
 
 
 (function () {
-    angular.module('khanhshop', ['khanhshop.products','khanhshop.common']).config(config);
+    angular.module('khanhshop',
+        ['khanhshop.products',
+        'khanhshop.product_categories',
+        'khanhshop.common'])
+        .config(config);
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider.state('home', {
