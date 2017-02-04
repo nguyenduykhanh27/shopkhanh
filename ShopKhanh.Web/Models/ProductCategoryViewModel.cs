@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,10 +10,11 @@ namespace ShopKhanh.Web.Models
     {
         public int ID { set; get; }
 
+        [Required]
 
         public string Name { set; get; }
 
-
+        [Required]
         public string Alias { set; get; }
 
 
@@ -40,7 +42,8 @@ namespace ShopKhanh.Web.Models
         public string MetaKeyword { set; get; }
 
         public string MetaDescription { set; get; }
-
+            
+        [Required]
         public bool Status { set; get; }
     }
 }
