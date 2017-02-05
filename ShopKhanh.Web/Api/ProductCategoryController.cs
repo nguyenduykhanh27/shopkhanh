@@ -10,6 +10,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ShopKhanh.Web.infrastructure.Extensions;
+using System.Web.Script.Serialization;
+
 namespace ShopKhanh.Web.Api
 {
     [RoutePrefix("api/productcategory")]
@@ -140,6 +142,61 @@ namespace ShopKhanh.Web.Api
             });
         }
 
+        [Route("delete")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage Delete(HttpRequestMessage request,int id)
+        {
+            return CreateHttpRespone(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                   var oldProductCategory = _productCategoryService.Delete(id);
+                    _productCategoryService.Save();
+
+                    var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(oldProductCategory);
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                }
+
+                return response;
+            });
+        }
+
+
+        [Route("deletemulti")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedProductCategories)
+        {
+            return CreateHttpRespone(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var listProductCategory = new JavaScriptSerializer().Deserialize<List<int>>(checkedProductCategories);
+                    foreach(var item in listProductCategory)
+                    {
+                         _productCategoryService.Delete(item);
+
+                    }
+                  
+                    _productCategoryService.Save();
+
+                    response = request.CreateResponse(HttpStatusCode.OK, listProductCategory.Count);
+                }
+
+                return response;
+            });
+        }
 
 
     }

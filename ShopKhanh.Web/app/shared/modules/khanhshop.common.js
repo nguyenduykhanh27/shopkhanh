@@ -1,4 +1,4 @@
 ﻿
 (function () {
-    angular.module('khanhshop.common', ['ui.router'])
+    angular.module('khanhshop.common', ['ui.router','ngBootbox'])
 })();
