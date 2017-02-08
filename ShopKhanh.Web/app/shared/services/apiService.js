@@ -4,7 +4,6 @@
     app.factory('apiService', apiService);
 
     apiService.$inject = ['$http', 'notificationService'];
-
     function apiService($http, notificationService) {
         return {
             get: get,
@@ -12,7 +11,6 @@
             put: put,
             del: del
         }
-
         function del(url, data, success, failure) {
             $http.delete(url, data).then(function (result) {
                 success(result);
@@ -27,7 +25,6 @@
 
             });
         }
-
 
         function post(url, data, success, failure) {
             $http.post(url, data).then(function (result) {
@@ -58,7 +55,6 @@
 
             });
         }
-
         function get(url, params, success, failure) {
             $http.get(url, params).then(function (result) {
                 success(result);

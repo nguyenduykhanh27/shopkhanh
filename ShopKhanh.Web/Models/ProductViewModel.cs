@@ -32,6 +32,7 @@ namespace ShopKhanh.Web.Models
 
 
         public string Description { set; get; }
+
         public string Content { set; get; }
 
         public bool? HomeFlag { set; get; }
@@ -53,6 +54,8 @@ namespace ShopKhanh.Web.Models
         public string MetaDescription { set; get; }
 
         public bool Status { set; get; }
+
+        public string Tags { set; get; }
         public virtual ProductCategoryViewModel ProductCategory { set; get; }
     }
 }

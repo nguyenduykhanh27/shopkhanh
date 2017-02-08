@@ -21,38 +21,38 @@ namespace ShopKhanh.Web.infrastructure.Core
 
         protected HttpResponseMessage CreateHttpRespone(HttpRequestMessage requestMessage, Func<HttpResponseMessage> function)
         {
-            HttpResponseMessage reponse = null;
+            HttpResponseMessage response = null;
             try
             {
-                reponse = function.Invoke();
+                response = function.Invoke();
             }
             catch (DbEntityValidationException ex)
             {
                 foreach (var eve in ex.EntityValidationErrors)
                 {
-                    Trace.WriteLine($"Entity of type \"{ eve.Entry.Entity.GetType().Name}\" instate \"{eve.Entry.State}\" has the following validation errors.");
+                    Trace.WriteLine($"Entity of type \"{eve.Entry.Entity.GetType().Name}\" in state \"{eve.Entry.State}\" has the following validation error.");
                     foreach (var ve in eve.ValidationErrors)
                     {
-                        Trace.WriteLine($"- Property:\"{  ve.PropertyName}\",Error:\"{ve.ErrorMessage}\"");
+                        Trace.WriteLine($"- Property: \"{ve.PropertyName}\", Error: \"{ve.ErrorMessage}\"");
                     }
                 }
-                logError(ex);
-                reponse = requestMessage.CreateErrorResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
+                LogError(ex);
+                response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
             }
             catch (DbUpdateException dbEx)
             {
-                logError(dbEx);
-                reponse = requestMessage.CreateResponse(HttpStatusCode.BadRequest, dbEx.InnerException.Message);
+                LogError(dbEx);
+                response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, dbEx.InnerException.Message);
             }
             catch (Exception ex)
             {
-                logError(ex);
-                reponse = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+                LogError(ex);
+                response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
-            return reponse;
+            return response;
         }
 
-        private void logError(Exception ex)
+        private void LogError(Exception ex)
         {
             try
             {
@@ -67,5 +67,6 @@ namespace ShopKhanh.Web.infrastructure.Core
             {
             }
         }
+
     }
 }

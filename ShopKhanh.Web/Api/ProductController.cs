@@ -25,7 +25,9 @@ namespace ShopKhanh.Web.Api
         {
             this._productService = productService;
         }
+
         #endregion
+
         [Route("getallparents")]
         [HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request)
@@ -37,6 +39,21 @@ namespace ShopKhanh.Web.Api
                 var responseData = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(model);
 
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                return response;
+            });
+        }
+        [Route("getbyid/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage GetById(HttpRequestMessage request, int id)
+        {
+            return CreateHttpRespone(request, () =>
+            {
+                var model = _productService.GetById(id);
+
+                var responseData = Mapper.Map<Product, ProductViewModel>(model);
+
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+
                 return response;
             });
         }
@@ -66,28 +83,12 @@ namespace ShopKhanh.Web.Api
                 return response;
             });
         }
-        [Route("getbyid/{id:int}")]
-        [HttpGet]
-
-        public HttpResponseMessage GetById(HttpRequestMessage request, int id)
-        {
-            return CreateHttpRespone(request, () =>
-            {
-                var model = _productService.GetById(id);
-
-                var responseData = Mapper.Map<Product, ProductViewModel>(model);
-
-                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-
-                return response;
-            });
-        }
 
 
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage Create(HttpRequestMessage request, ProductViewModel productVm)
+        public HttpResponseMessage Create(HttpRequestMessage request, ProductViewModel productCategoryVm)
         {
             return CreateHttpRespone(request, () =>
             {
@@ -99,7 +100,7 @@ namespace ShopKhanh.Web.Api
                 else
                 {
                     var newProduct = new Product();
-                    newProduct.UpdateProduct(productVm);
+                    newProduct.UpdateProduct(productCategoryVm);
                     newProduct.CreatedDate = DateTime.Now;
                     _productService.Add(newProduct);
                     _productService.Save();
@@ -111,6 +112,7 @@ namespace ShopKhanh.Web.Api
                 return response;
             });
         }
+
 
         [Route("update")]
         [HttpPut]
@@ -156,18 +158,16 @@ namespace ShopKhanh.Web.Api
                 }
                 else
                 {
-                    var oldProduct = _productService.Delete(id);
+                    var oldProductCategory = _productService.Delete(id);
                     _productService.Save();
 
-                    var responseData = Mapper.Map<Product, ProductViewModel>(oldProduct);
+                    var responseData = Mapper.Map<Product, ProductViewModel>(oldProductCategory);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 
                 return response;
             });
         }
-
-
         [Route("deletemulti")]
         [HttpDelete]
         [AllowAnonymous]
@@ -182,22 +182,19 @@ namespace ShopKhanh.Web.Api
                 }
                 else
                 {
-                    var listProduct = new JavaScriptSerializer().Deserialize<List<int>>(checkedProducts);
-                    foreach (var item in listProduct)
+                    var listProductCategory = new JavaScriptSerializer().Deserialize<List<int>>(checkedProducts);
+                    foreach (var item in listProductCategory)
                     {
                         _productService.Delete(item);
-
                     }
 
                     _productService.Save();
 
-                    response = request.CreateResponse(HttpStatusCode.OK, listProduct.Count);
+                    response = request.CreateResponse(HttpStatusCode.OK, listProductCategory.Count);
                 }
 
                 return response;
             });
         }
-
-
     }
 }

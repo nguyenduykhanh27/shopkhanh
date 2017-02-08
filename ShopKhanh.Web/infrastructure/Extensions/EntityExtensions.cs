@@ -53,19 +53,18 @@ namespace ShopKhanh.Web.infrastructure.Extensions
         {
             product.ID = productVm.ID;
             product.Name = productVm.Name;
+            product.Description = productVm.Description;
             product.Alias = productVm.Alias;
             product.CategoryID = productVm.CategoryID;
+            product.Content = productVm.Content;
             product.Image = productVm.Image;
             product.MoreImages = productVm.MoreImages;
             product.Price = productVm.Price;
             product.PromotionPrice = productVm.PromotionPrice;
             product.Warranty = productVm.Warranty;
-
-            product.Description = productVm.Description;
-            product.Content = productVm.Content;
-            product.HomeFlag = productVm.HomeFlag;
             product.HomeFlag = productVm.HomeFlag;
             product.ViewCount = productVm.ViewCount;
+
             product.CreatedDate = productVm.CreatedDate;
             product.CreatedBy = productVm.CreatedBy;
             product.UpdatedDate = productVm.UpdatedDate;
@@ -73,7 +72,7 @@ namespace ShopKhanh.Web.infrastructure.Extensions
             product.MetaKeyword = productVm.MetaKeyword;
             product.MetaDescription = productVm.MetaDescription;
             product.Status = productVm.Status;
-
+            product.Tags = productVm.Tags;
         }
         public static void UpdateProductCategory(this ProductCategory productcategory, ProductCategoryViewModel productCategoryVm)
         {

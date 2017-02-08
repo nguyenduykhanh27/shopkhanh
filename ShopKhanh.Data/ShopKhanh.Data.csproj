@@ -92,6 +92,30 @@
     <Compile Include="Migrations\201702030900174_TableProductCategories.Designer.cs">
       <DependentUpon>201702030900174_TableProductCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702070714346_AddTagField.cs" />
+    <Compile Include="Migrations\201702070714346_AddTagField.Designer.cs">
+      <DependentUpon>201702070714346_AddTagField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702080201592_TableProductTags.cs" />
+    <Compile Include="Migrations\201702080201592_TableProductTags.Designer.cs">
+      <DependentUpon>201702080201592_TableProductTags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702080215463_InitialDB1.cs" />
+    <Compile Include="Migrations\201702080215463_InitialDB1.Designer.cs">
+      <DependentUpon>201702080215463_InitialDB1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702080225595_ProductTags.cs" />
+    <Compile Include="Migrations\201702080225595_ProductTags.Designer.cs">
+      <DependentUpon>201702080225595_ProductTags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702080229113_InitialBaseline.cs" />
+    <Compile Include="Migrations\201702080229113_InitialBaseline.Designer.cs">
+      <DependentUpon>201702080229113_InitialBaseline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702080248121_ProductTagsMigration.cs" />
+    <Compile Include="Migrations\201702080248121_ProductTagsMigration.Designer.cs">
+      <DependentUpon>201702080248121_ProductTagsMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -151,6 +175,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702030900174_TableProductCategories.resx">
       <DependentUpon>201702030900174_TableProductCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702070714346_AddTagField.resx">
+      <DependentUpon>201702070714346_AddTagField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702080201592_TableProductTags.resx">
+      <DependentUpon>201702080201592_TableProductTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702080215463_InitialDB1.resx">
+      <DependentUpon>201702080215463_InitialDB1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702080225595_ProductTags.resx">
+      <DependentUpon>201702080225595_ProductTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702080229113_InitialBaseline.resx">
+      <DependentUpon>201702080229113_InitialBaseline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702080248121_ProductTagsMigration.resx">
+      <DependentUpon>201702080248121_ProductTagsMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
