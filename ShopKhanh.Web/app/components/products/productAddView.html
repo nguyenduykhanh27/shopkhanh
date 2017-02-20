@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Mô tả ngắn</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="description" ng-maxlength="500" ng-model="product.Description">
+                        <textarea type="text" class="form-control" name="description" ckeditor="ckeditorOptions" ng-maxlength="500" ng-model="product.Description"></textarea>
                         <span ng-show="frmAddProduct.description.$error.maxlength" class="has-error">Mô tả chỉ được 500 ký tự</span>
                     </div>
                 </div>
@@ -89,17 +89,11 @@
                     <label for="inputEmail3" class="col-sm-2 control-label">Thêm ảnh</label>
                     <div class="col-sm-10">
                         <ul class="list-inline">
-
-                            <li ng-repeat="img in moreImages">
-                                <img  ng-src="{{img}}" width="100"/>
-
-                            </li>
+                            <li ng-repeat="img in moreImages"><img ng-src="{{img}}" width="100" /></li>
                         </ul>
-                      
                         <button class="btn btn-default" type="button" ng-click="ChooseMoreImage()">Chọn ảnh</button>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Mô tả sản phẩm</label>
                     <div class="col-sm-10">
@@ -145,7 +139,7 @@
                 </div>
             </div><!-- /.box-body -->
             <div class="box-footer">
-                <button ui-sref="products" class="btn btn-default">Hủy</button>
+                <button ui-sref="product_categories" class="btn btn-default">Hủy</button>
                 <button type="submit" ng-disabled="frmAddProduct.$invalid" class="btn btn-success pull-right">Lưu</button>
             </div><!-- /.box-footer -->
         </form>

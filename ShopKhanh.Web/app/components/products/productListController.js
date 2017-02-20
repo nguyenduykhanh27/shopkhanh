@@ -92,7 +92,7 @@
             }
             apiService.get('/api/product/getall', config, function (result) {
                 if (result.data.TotalCount == 0) {
-                    notificationService.displayWaring('Không có bản ghi nào được tìm thấy.');
+                    notificationService.displayWarning('Không có bản ghi nào được tìm thấy.');
                 }
                 $scope.products = result.data.Items;
                 $scope.page = result.data.Page;
@@ -105,4 +105,4 @@
 
         $scope.getProducts();
     }
-})(angular.module('khanhshop.products'));
+})(angular.module('tedushop.products'));

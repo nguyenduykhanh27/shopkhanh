@@ -24,7 +24,7 @@ namespace ShopKhanh.Web.Api
         [Route("getall")]
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 var listCategory = _postCategoryService.GetAll();
                 var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
@@ -38,7 +38,7 @@ namespace ShopKhanh.Web.Api
 
         public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
                 if (ModelState.IsValid)
@@ -61,7 +61,7 @@ namespace ShopKhanh.Web.Api
         [Route("update")]
         public HttpResponseMessage Put(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
                 if (ModelState.IsValid)
@@ -83,7 +83,7 @@ namespace ShopKhanh.Web.Api
 
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
                 if (ModelState.IsValid)

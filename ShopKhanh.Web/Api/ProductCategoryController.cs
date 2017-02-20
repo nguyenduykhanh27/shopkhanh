@@ -30,7 +30,7 @@ namespace ShopKhanh.Web.Api
         [HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 var model = _productCategoryService.GetAll();
 
@@ -45,7 +45,7 @@ namespace ShopKhanh.Web.Api
         [HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 int totalRow = 0;
                 var model = _productCategoryService.GetAll(keyword);
@@ -71,7 +71,7 @@ namespace ShopKhanh.Web.Api
       
         public HttpResponseMessage GetById(HttpRequestMessage request,int id)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 var model = _productCategoryService.GetById(id);
 
@@ -89,7 +89,7 @@ namespace ShopKhanh.Web.Api
         [AllowAnonymous]
         public HttpResponseMessage Create(HttpRequestMessage request, ProductCategoryViewModel productCategoryVm)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
                 if (!ModelState.IsValid)
@@ -117,7 +117,7 @@ namespace ShopKhanh.Web.Api
         [AllowAnonymous]
         public HttpResponseMessage Update(HttpRequestMessage request, ProductCategoryViewModel productCategoryVm)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
                 if (!ModelState.IsValid)
@@ -147,7 +147,7 @@ namespace ShopKhanh.Web.Api
         [AllowAnonymous]
         public HttpResponseMessage Delete(HttpRequestMessage request,int id)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
                 if (!ModelState.IsValid)
@@ -173,7 +173,7 @@ namespace ShopKhanh.Web.Api
         [AllowAnonymous]
         public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedProductCategories)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
                 if (!ModelState.IsValid)

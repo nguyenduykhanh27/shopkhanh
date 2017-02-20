@@ -1,21 +1,22 @@
 ﻿(function (app) {
     app.controller('productCategoryAddController', productCategoryAddController);
 
-    productCategoryAddController.$inject = ['apiService', '$scope', 'notificationService', '$state', 'commonService'];
+    productCategoryAddController.$inject = ['apiService', '$scope', 'notificationService', '$state','commonService'];
 
     function productCategoryAddController(apiService, $scope, notificationService, $state,commonService) {
         $scope.productCategory = {
             CreatedDate: new Date(),
-            Status: true
-           
+            Status: true,
         }
-
+       
         $scope.AddProductCategory = AddProductCategory;
+
         $scope.GetSeoTitle = GetSeoTitle;
+
         function GetSeoTitle() {
             $scope.productCategory.Alias = commonService.getSeoTitle($scope.productCategory.Name);
-
         }
+
         function AddProductCategory() {
             apiService.post('api/productcategory/create', $scope.productCategory,
                 function (result) {
@@ -36,4 +37,4 @@
         loadParentCategory();
     }
 
-})(angular.module('khanhshop.product_categories'));
+})(angular.module('tedushop.product_categories'));

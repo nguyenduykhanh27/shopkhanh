@@ -14,6 +14,7 @@ namespace ShopKhanh.Web.Api
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+
         public AccountController()
         {
         }
@@ -47,6 +48,7 @@ namespace ShopKhanh.Web.Api
                 _userManager = value;
             }
         }
+
         [HttpPost]
         [AllowAnonymous]
         [Route("login")]
@@ -62,5 +64,14 @@ namespace ShopKhanh.Web.Api
             return request.CreateResponse(HttpStatusCode.OK, result);
         }
 
+        [HttpPost]
+        [Authorize]
+        [Route("logout")]
+        public HttpResponseMessage Logout(HttpRequestMessage request)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            return request.CreateResponse(HttpStatusCode.OK, new { success = true });
+        }
     }
 }

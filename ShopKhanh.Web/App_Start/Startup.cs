@@ -25,6 +25,7 @@ namespace ShopKhanh.Web.App_Start
     {
         public void Configuration(IAppBuilder app)
         {
+            // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
             ConfigAutofac(app);
             ConfigureAuth(app);
         }
@@ -32,27 +33,37 @@ namespace ShopKhanh.Web.App_Start
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
-            //Register your Web API controllers
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            // Register your Web API controllers.
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()); //Register WebApi Controllers
+
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
+
             builder.RegisterType<ShopKhanhDbContext>().AsSelf().InstancePerRequest();
-            //Aspnet Identity
+
+            //Asp.net Identity
             builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
             builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
             builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
             builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
-            //Repositories
+
+
+            // Repositories
             builder.RegisterAssemblyTypes(typeof(PostCategoryRepository).Assembly)
-                .Where(t => t.Name.EndsWith("Repository")).AsImplementedInterfaces().InstancePerRequest();
-            //Services
+                .Where(t => t.Name.EndsWith("Repository"))
+                .AsImplementedInterfaces().InstancePerRequest();
+
+            // Services
             builder.RegisterAssemblyTypes(typeof(PostCategoryService).Assembly)
-                .Where(t => t.Name.EndsWith("Service")).AsImplementedInterfaces().InstancePerRequest();
+               .Where(t => t.Name.EndsWith("Service"))
+               .AsImplementedInterfaces().InstancePerRequest();
+
             Autofac.IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container);
-               
+
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container); //Set the WebApi DependencyResolver
+
         }
     }
 }

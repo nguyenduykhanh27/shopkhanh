@@ -19,7 +19,7 @@ namespace ShopKhanh.Web.infrastructure.Core
             this._errorService = errorService;
         }
 
-        protected HttpResponseMessage CreateHttpRespone(HttpRequestMessage requestMessage, Func<HttpResponseMessage> function)
+        protected HttpResponseMessage CreateHttpResponse(HttpRequestMessage requestMessage, Func<HttpResponseMessage> function)
         {
             HttpResponseMessage response = null;
             try

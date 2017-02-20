@@ -1,0 +1,198 @@
+﻿@model ShopKhanh.Web.Models.HomeViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+
+<div class="col-sm-9 col-right">
+    <div class="featuredproductslider-container">
+        <div class="title-group1"><h2>Sản phẩm mới nhất</h2></div>
+        <div id="featured-products" class="owl-container">
+            <div class="owl">            
+                @foreach (var product in Model.Featured)
+                {
+                    var url = "/" + product.Alias + ".p-" + product.ID + ".html";
+                    <div class='productslider-item item'>
+                        <div class="item-inner">
+                            <div class="images-container">
+                                <div class="product_icon">
+                                    <div class='new-icon'><span>Mới </span></div>
+                                </div>
+                                <a href="@url" title="Nunc facilisis" class="product-image">
+                                    <img src="@product.Image" alt="Nunc facilisis" />
+                                </a>
+                                <div class="box-hover">
+                                    <ul class="add-to-links">
+                                        <li><a href="#" class="link-quickview">Xem chi tiết</a></li>
+                                        <li><a href="#" class="link-cart">Mua hàng</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="des-container">
+                                <h2 class="product-name"><a href="@url" title="Nunc facilisis">@product.Name</a></h2>
+                                <div class="price-box">
+                                    <p class="special-price">
+                                        <span class="price-label">Giá sản phẩm:</span>
+                                        <span class="price">@product.Price.ToString("N0")VNĐ</span>
+                                    </p>
+                                    <p class="old-price">
+                                        @if (product.PromotionPrice.HasValue)
+                                        {
+                                            
+                                            <span class="price">@product.PromotionPrice.Value.ToString("N0")VNĐ</span>
+                                        }
+                                        <span class="price-label">Giá khuyến mãi : </span>
+                                    </p>
+                                </div>
+                                <div class="ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width:67%"></div>
+                                    </div>
+                                    <span class="amount"><a href="#">3 Review(s)</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div><!-- /.featuredproductslider-container -->
+    <div class="banner">
+        <a href="#"><img alt="" src="~/Assets/client/images/ads/ads-05.jpg"></a>
+    </div>
+    <div class="newproductslider-container">
+        <div class="title-group1"><h2>Sản phẩm bán chạy</h2></div>
+        <div id="new-products" class="owl-container">
+            <div class="owl">
+
+                @foreach (var product in Model.NewArrivals)
+                {
+                    var url = "/" + product.Alias + ".p-" + product.ID + ".html";
+                    <div class='productslider-item item'>
+                        <div class="item-inner">
+                            <div class="images-container">
+                                <div class="product_icon">
+                                    <div class='new-icon'><span>Bán chạy</span></div>
+                                </div>
+                                <a href="@url" title="Nunc facilisis" class="product-image">
+                                    <img src="@product.Image" alt="Nunc facilisis" />
+                                </a>
+                                <div class="box-hover">
+                                    <ul class="add-to-links">
+
+                                        <li><a href="#" class="link-cart">Mua hàng</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="des-container">
+                                <h2 class="product-name"><a href="#" title="Nunc facilisis">@product.Name</a></h2>
+                                <div class="price-box">
+                                    <p class="special-price">
+                                        <span class="price-label">Giá sản phẩm:</span>
+                                        <span class="price">@product.Price.ToString("N0")VNĐ</span>
+                                    </p>
+                                    <p class="old-price">
+                                        @if (product.PromotionPrice.HasValue)
+                                        {
+
+                                            <span class="price">@product.PromotionPrice.Value.ToString("N0")VNĐ</span>
+                                        }
+                                        <span class="price-label">Giá khuyến mãi :</span>
+                                    </p>
+                                </div>
+                                <div class="ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width:67%"></div>
+                                    </div>
+                                    <span class="amount"><a href="#">3 Review(s)</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+    </div><!-- /.newproductslider-container -->
+    <div class="row">
+        <div class="col-smc-7">
+            <div class="banner">
+                <a href="#"><img alt="" src="~/Assets/client/images/ads/ads-06.jpg"></a>
+            </div>
+        </div>
+        <div class="col-smc-5">
+            <div class="banner">
+                <a href="#"><img alt="" src="~/Assets/client/images/ads/ads-07.jpg"></a>
+            </div>
+        </div>
+    </div>
+ 
+</div><!-- /.col-right -->
+
+
+
+
+
+
+
+
+
+@section homeProducts{
+    <div class="col-md-9 col-md-offset-3">
+        @foreach (var slide in Model.Slides)
+        {
+            <div class="flexslider ma-nivoslider">
+                <div class="ma-loading"></div>
+                <div id="ma-inivoslider-banner7" class="slides">
+                    <img src="~/Assets/client/images/slider/slide-01.jpg" class="dn" alt="" title="#banner7-caption1" />
+                    <img src="~/Assets/client/images/slider/slide-02.jpg" class="dn" alt="" title="#banner7-caption2" />
+                </div>
+
+                <div id="banner7-caption1" class="banner7-caption nivo-html-caption nivo-caption">
+                    <div class="timethai"></div>
+                    <div class="banner7-content slider-1">
+                        <div class="title-container">
+                            @Html.Raw(slide.Description)
+                        </div>
+                        <div class="banner7-des">
+                            <div class="des">
+                                <h1>sale up to!</h1>
+                                <h2>30% off</h2>
+                                <div class="check-box">
+                                    <ul class="list-unstyled">
+                                        <li>With all products in shop</li>
+                                        <li>All combos $69.96</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <img class="img1" src="@slide.Image" alt="" />
+                    </div>
+                </div>
+
+
+                <div id="banner7-caption2" class="banner7-caption nivo-html-caption nivo-caption">
+                    <div class="timethai"></div>
+                    <div class="banner7-content slider-2">
+                        <div class="title-container">
+                            @Html.Raw(slide.Description)
+                        </div>
+                        <div class="banner7-des">
+                            <div class="des">
+                                <h1>sale up to!</h1>
+                                <h2>50% off</h2>
+                            </div>
+                        </div>
+                        <img class="img1" src="@slide.Image" alt="" />
+                    </div>
+                </div>
+            </div><!-- /.flexslider -->
+        }
+    </div>
+}
+
+

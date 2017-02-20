@@ -18,6 +18,7 @@ namespace ShopKhanh.Web.App_Start
         {
         }
     }
+    // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
@@ -48,7 +49,9 @@ namespace ShopKhanh.Web.App_Start
             // Configure user lockout defaults
             manager.UserLockoutEnabledByDefault = true;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
+
             manager.MaxFailedAccessAttemptsBeforeLockout = 5;
+
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {

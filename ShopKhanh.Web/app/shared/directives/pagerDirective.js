@@ -47,4 +47,4 @@
         }
     }
 
-})(angular.module('khanhshop.common'));
+})(angular.module('tedushop.common'));

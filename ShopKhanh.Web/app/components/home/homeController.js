@@ -4,4 +4,4 @@
     function homeController() {
 
     }
-})(angular.module('khanhshop'));
+})(angular.module('tedushop'));

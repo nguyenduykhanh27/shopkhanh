@@ -1,0 +1,42 @@
+﻿@model  IEnumerable<ShopKhanh.Web.Models.ProductCategoryViewModel>
+
+
+<div class="mega-container visible-lg visible-md">
+    <div class="navleft-container">
+        <div class="mega-menu-title"><h3>Danh mục sản phẩm</h3></div>
+        <div class="mega-menu-category">
+            <ul class="nav">
+                @foreach (var category in Model.Where(x => x.ParentID == null))
+                {
+                    var url = "/" + category.Alias + ".pc-" + category.ID + ".html";
+                    var childCategories = Model.Where(x => x.ParentID == category.ID);
+                    <li>
+                        <a href="@url">@category.Name</a>
+                        @if (childCategories.Count() > 0)
+                        {
+                            <div class="wrap-popup">
+                                <div class="popup">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <ul class="nav">
+                                                @foreach (var childCategory in childCategories)
+                                                {
+                                                    var childUrl = "/" + childCategory.Alias + ".pc-" + childCategory.ID + ".html";
+                                                    <li><a href="@childUrl">@childCategory.Name</a></li>
+                                                }
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <a href="#" class="ads"><img alt="" src="~/Assets/client/images/ads/ads-08.jpg" class="img-responsive"></a>
+                                </div>
+                            </div>
+                        }
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+</div>
