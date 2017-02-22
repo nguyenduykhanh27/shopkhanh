@@ -1,0 +1,221 @@
+﻿@model ShopKhanh.Web.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+<link href="~/Assets/client/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Assets/client/css/animate.css" rel="stylesheet">
+<link href="~/Assets/client/css/owl.carousel.css" rel="stylesheet">
+<link href="~/Assets/client/css/jquery.bxslider.css" rel="stylesheet">
+<link href="~/Assets/client/css/cloud-zoom.css" rel="stylesheet">
+<link href="~/Assets/client/css/style.css" rel="stylesheet">
+<link href="~/Assets/client/css/responsive.css" rel="stylesheet">
+
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="~/Assets/client/js/bootstrap.min.js"></script>
+
+<script src="~/Assets/client/js/cloud-zoom.js"></script>;
+<script src="~/Assets/client/js/owl.carousel.min.js"></script>
+<script src="~/Assets/client/js/jquery.bxslider.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        /* special-offer slider */
+        $("#special-offer .owl").owlCarousel({
+            autoPlay: false,
+            items: 1,
+            itemsDesktop: [1199, 1],
+            itemsDesktopSmall: [991, 1],
+            itemsTablet: [767, 2],
+            itemsMobile: [480, 1],
+            slideSpeed: 3000,
+            paginationSpeed: 3000,
+            rewindSpeed: 3000,
+            navigation: true,
+            stopOnHover: true,
+            pagination: false,
+            scrollPerPage: true,
+        });
+        /* featured-products slider */
+        $("#featured-products .owl").owlCarousel({
+            autoPlay: false,
+            items: 4,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [991, 2],
+            itemsTablet: [767, 2],
+            itemsMobile: [480, 1],
+            slideSpeed: 3000,
+            paginationSpeed: 3000,
+            rewindSpeed: 3000,
+            navigation: true,
+            stopOnHover: true,
+            pagination: false,
+            scrollPerPage: true,
+        });
+        /* .thumbnail-container product image slider */
+        $('.thumbnail-container .bxslider').bxSlider({
+            slideWidth: 94,
+            slideMargin: 5,
+            minSlides: 4,
+            maxSlides: 4,
+            pager: false,
+            speed: 500,
+            pause: 3000
+        });
+    });
+</script>
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-right">
+
+                <div class="page-title">
+                    <h1 style="color:red"> TRANG CHI TIẾT SẢN PHẨM</h1>
+                </div>
+                <ol id="products-list" class="products-list">
+
+                    <li class="item">
+                        <div class="item-inner">
+                            <div class="row">
+
+
+                                <div class="col-sm-4 col-sms-4 col-smb-12">
+                                    <div class="images-container">
+                                        <div class="product_icon">
+                                            <div class="new-icon">
+                                              
+                                            </div>
+                                        </div>
+                                        <div class="product-img-box">
+                                        <p class="product-image">
+                                            <a href="images/products/1.jpg" class="cloud-zoom" id="ma-zoom1">
+                                                <img src="@Model.Image" alt="Fusce aliquam" title="Fusce aliquam" />
+                                            </a>
+                                        </p>
+                                        
+                                    </div>
+                                        @*<a class="product-image" title="Primis in faucibus" href="#" rel="author"><img alt="Primis in faucibus" src="~/Assets/client/images/products/2.jpg"></a>
+                                        <div class="more-views thumbnail-container">
+                                            <ul class="bxslider">
+                                                <li class="thumbnail-item">
+                                                    <a href="images/products/1.jpg" class="cloud-zoom-gallery" title="" name="images/products/1.jpg" rel="useZoom: 'ma-zoom1', smallImage: 'images/products/1.jpg'">
+                                                        <img src="~/Assets/client/images/products/1.jpg" alt="" />
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>*@
+
+                                    </div>
+
+                                </div>
+                                <div class="product-shop col-sm-8 col-sms-8 col-smb-12">
+                                    <div class="f-fix">
+                                        <h2 class="product-name"><a title="Fusce aliquam" href="#">Tên sản phẩm: @Model.Name</a></h2>
+                                        <div class="ratings">
+                                            <div class="rating-box">
+                                                <div style="width:87%" class="rating"></div>
+                                            </div>
+                                            <span class="amount"><a href="#">1 Review(s)</a></span>
+                                        </div>
+                                        <div class="price-box">
+                                            <span id="product-price-11" class="regular-price">
+                                                <span class="price">@(Model.Price == 0 ? "Liên hệ" : Model.Price.ToString("N0"))VNĐ</span>
+                                            </span>
+                                        </div>
+                                        <div class="desc std">
+                                            Mô tả sản phẩm : @Html.Raw(Model.Description)
+                                        </div>
+                                        <div class="actions">
+                                            <div class="actions-inner">
+                                                <button class="btn btn-danger" title="Add to Cart" type="button" href="/them-gio-hang/@Model.ID">Thêm vào giỏ hàng</button>
+                                             
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+                <div class="product-tab tab-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#product-desc" data-toggle="tab">CHI TIẾT SẢN PHẨM</a></li>
+                        <li><a href="#product-review" data-toggle="tab">BÌNH LUẬN</a></li>
+                        
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="product-desc">
+                            @Html.Raw(Model.Content)
+                        </div>
+                        <div class="tab-pane" id="product-review">
+
+                        </div>
+                       
+                    </div>
+                </div>
+
+            @{ 
+                var relatedProducts = (IEnumerable<ShopKhanh.Web.Models.ProductViewModel>)ViewBag.RelatedProducts;
+            }
+                <div class="featuredproductslider-container">
+                    <div class="title-group1"><h2>Sản phẩm liên quan</h2></div>
+                    <div id="featured-products" class="owl-container">
+                        <div class="owl">
+                            @foreach (var product in relatedProducts)
+                            {
+                                <div class='productslider-item item'>
+                                    <div class="item-inner">
+                                        <div class="images-container">
+                                           
+                                            <a href="/@(product.Alias).p-@(product.ID).html" title="Nunc facilisis" class="product-image">
+                                                <img src="@product.Image" alt="Nunc facilisis" />
+                                            </a>
+                                            <div class="box-hover">
+                                                <ul class="add-to-links">
+                                                    <li><a href="/@(product.Alias).p-@(product.ID).html" class="link-quickview">Xem chi tiết</a></li>
+                                                    
+                                                    <li><a href="#" class="link-cart">Thêm vào giỏ hàng</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="des-container">
+                                            <h2 class="product-name"><a href="/@(product.Alias).p-@(product.ID).html" title="Nunc facilisis">@product.Name</a></h2>
+                                            <div class="price-box">
+                                                <p class="special-price">
+                                                    <span class="price-label">Giá sản phẩm</span>
+                                                    <span class="price">Giá bán: @(product.Price == 0 ? "Liên hệ" : product.Price.ToString("N2")) VNĐ</span>
+                                                </p>
+
+                                                <p class="old-price">
+                                                    @if (product.PromotionPrice.HasValue)
+                                                    {
+
+                                                        <span class="price">@product.PromotionPrice.Value.ToString("N0")VNĐ</span>
+                                                    }
+                                                    <span class="price-label">Giá khuyến mãi : </span>
+                                                </p>
+                                            </div>
+                                            <div class="ratings">
+                                                <div class="rating-box">
+                                                    <div class="rating" style="width:67%"></div>
+                                                </div>
+                                                <span class="amount"><a href="#">3 Review(s)</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                         
+                          
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.col-right -->     
+        </div>
+    </div>
+</div>
+
+
+

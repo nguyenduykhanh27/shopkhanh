@@ -47,7 +47,8 @@ namespace ShopKhanh.Model.Models
         public bool? HotFlag { set; get; }
         public int? ViewCount { set; get; }
         public string Tags { set; get; }
-        
+        public int Quantity { set; get; }
+
         [ForeignKey("CategoryID")]
         public virtual ProductCategory ProductCategory { set; get; }
         

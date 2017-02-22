@@ -74,6 +74,7 @@ namespace ShopKhanh.Web.infrastructure.Extensions
             product.MetaDescription = productVm.MetaDescription;
             product.Status = productVm.Status;
             product.Tags = productVm.Tags;
+            product.Quantity = productVm.Quantity;
         }
         public static void UpdateProductCategory(this ProductCategory productcategory, ProductCategoryViewModel productCategoryVm)
         {

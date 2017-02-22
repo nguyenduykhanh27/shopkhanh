@@ -25,24 +25,14 @@
                             </div>
                             <div class="sort-by hidden-xs">
 
-                                <label>Sort By:</label>
-                                <select class="form-control input-sm">
-                                    <option selected="selected">Position</option>
-                                    <option>Name</option>
-                                    <option>Price</option>
-                                </select>
-                                <a title="Set Descending Direction" href="#"><span class="fa fa-sort-amount-desc"></span></a>
-                            </div>
-                            <div class="limiter hidden-xs">
-                                <label>Show:</label>
-                                <div class="limiter-inner">
-                                    <select class="form-control input-sm">
-                                        <option>9</option>
-                                        <option selected="selected">12</option>
-                                        <option>24</option>
-                                        <option>36</option>
-                                    </select>
-                                </div>
+                                <ul class="w_nav">
+                                    <li>Sắp xếp : </li>
+                                    <li><a class="active" href="?page=@Model.Page&sort=popular">Phổ biến</a></li>
+                                    <li><a href="?page=@Model.Page&sort=new">Mới </a></li> |
+                                    <li><a href="?page=@Model.Page&sort=discount">Khuyến mãi</a></li> |
+                                    <li><a href="?page=@Model.Page&sort=price">Giá: Thấp -> Cao </a></li>
+                                 
+                                </ul>
                             </div>
 
                         </div>
@@ -50,6 +40,7 @@
                     <div class="row products">
                         @foreach (var product in Model.Items)
                         {
+                            var url = "/" + product.Alias + ".p-" + product.ID + ".html";
                             <div class="col-md-3 col-sm-6">
 
                                 <div class='productslider-item item'>
@@ -57,12 +48,12 @@
                                     <div class="item-inner">
                                         <div class="images-container">
 
-                                            <a href="#" title="Nunc facilisis" class="product-image">
+                                            <a href="@url" title="Nunc facilisis" class="product-image">
                                                 <img src="@product.Image" alt="@product.Name" />
                                             </a>
                                             <div class="box-hover">
                                                 <ul class="add-to-links">
-                                                    <li><a href="#" class="link-quickview">Xem chi tiết</a></li>
+                                                    <li><a href="@url" class="link-quickview">Xem chi tiết</a></li>
                                                     <li><a href="#" class="link-cart">Giỏ hàng</a></li>
                                                 </ul>
                                             </div>
