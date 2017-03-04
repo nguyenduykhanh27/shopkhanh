@@ -1,0 +1,11 @@
+﻿.tag{
+    display:block;
+}
+.tagslist li{
+    float:left;
+    display:block;
+}
+.error{
+    color:red;
+}
+

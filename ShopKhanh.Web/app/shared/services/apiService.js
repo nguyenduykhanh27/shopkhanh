@@ -18,7 +18,7 @@
                 success(result);
             }, function (error) {
                 console.log(error.status)
-                if (error.status === 401) {
+                if (error.status ==401) {
                     notificationService.displayError('Authenticate is required.');
                 }
                 else if (failure != null) {
@@ -27,6 +27,7 @@
 
             });
         }
+
         function post(url, data, success, failure) {
             authenticationService.setHeader();
             $http.post(url, data).then(function (result) {
@@ -42,6 +43,7 @@
 
             });
         }
+
         function put(url, data, success, failure) {
             authenticationService.setHeader();
             $http.put(url, data).then(function (result) {

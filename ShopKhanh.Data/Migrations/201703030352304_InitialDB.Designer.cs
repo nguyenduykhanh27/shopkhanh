@@ -7,13 +7,13 @@ namespace ShopKhanh.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddMoreQuantity : IMigrationMetadata
+    public sealed partial class InitialDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddMoreQuantity));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201702210631090_AddMoreQuantity"; }
+            get { return "201703030352304_InitialDB"; }
         }
         
         string IMigrationMetadata.Source

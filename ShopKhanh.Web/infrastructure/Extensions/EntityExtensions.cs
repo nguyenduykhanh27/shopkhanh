@@ -9,23 +9,25 @@ namespace ShopKhanh.Web.infrastructure.Extensions
 {
     public static class EntityExtensions
     {
-        public static void UpdatePostCategory(this PostCategory postcategory, PostCategoryViewModel postCategoryVm)
+        public static void UpdatePostCategory(this PostCategory postCategory, PostCategoryViewModel postCategoryVm)
         {
+            postCategory.ID = postCategoryVm.ID;
+            postCategory.Name = postCategoryVm.Name;
+            postCategory.Description = postCategoryVm.Description;
+            postCategory.Alias = postCategoryVm.Alias;
+            postCategory.ParentID = postCategoryVm.ParentID;
+            postCategory.DisplayOrder = postCategoryVm.DisplayOrder;
+            postCategory.Image = postCategoryVm.Image;
+            postCategory.HomeFlag = postCategoryVm.HomeFlag;
 
-            postcategory.ID = postCategoryVm.ID;
-            postcategory.Name = postCategoryVm.Name;
-            postcategory.Alias = postCategoryVm.Alias;
-            postcategory.Description = postCategoryVm.Description;
-            postcategory.ParentID = postCategoryVm.ParentID;
-            postcategory.DisplayOrder = postCategoryVm.DisplayOrder;
-            postcategory.Image = postCategoryVm.Image;
-            postcategory.CreatedDate = postCategoryVm.CreatedDate;
-            postcategory.CreatedBy = postCategoryVm.CreatedBy;
-            postcategory.UpdatedDate = postCategoryVm.UpdatedDate;
-            postcategory.UpdatedBy = postCategoryVm.UpdatedBy;
-            postcategory.MetaKeyword = postCategoryVm.MetaKeyword;
-            postcategory.MetaDescription = postCategoryVm.MetaDescription;
-            postcategory.Status = postCategoryVm.Status;        
+            postCategory.CreatedDate = postCategoryVm.CreatedDate;
+            postCategory.CreatedBy = postCategoryVm.CreatedBy;
+            postCategory.UpdatedDate = postCategoryVm.UpdatedDate;
+            postCategory.UpdatedBy = postCategoryVm.UpdatedBy;
+            postCategory.MetaKeyword = postCategoryVm.MetaKeyword;
+            postCategory.MetaDescription = postCategoryVm.MetaDescription;
+            postCategory.Status = postCategoryVm.Status;
+
         }
         public static void UpdatePost(this Post post, Post postVm)
         {
@@ -93,6 +95,29 @@ namespace ShopKhanh.Web.infrastructure.Extensions
             productcategory.MetaKeyword = productCategoryVm.MetaKeyword;
             productcategory.MetaDescription = productCategoryVm.MetaDescription;
             productcategory.Status = productCategoryVm.Status;
+        }
+        public static void UpdatePage(this Page page, PageViewModel pageVm)
+        {
+            page.ID = pageVm.ID;
+            page.Name = pageVm.Name;
+            page.Alias = pageVm.Alias;
+            page.Content = pageVm.Content;
+
+            page.CreatedDate = pageVm.CreatedDate;
+            page.CreatedBy = pageVm.CreatedBy;
+            page.UpdatedDate = pageVm.UpdatedDate;
+            page.UpdatedBy = pageVm.UpdatedBy;
+            page.MetaKeyword = pageVm.MetaKeyword;
+            page.MetaDescription = pageVm.MetaDescription;
+            page.Status = pageVm.Status;
+        }
+        public static void UpdateFeedback(this Feedback feedback, FeedbackViewModel feedbackVm)
+        {
+            feedback.Name = feedbackVm.Name;
+            feedback.Email = feedbackVm.Email;
+            feedback.Message = feedbackVm.Message;
+            feedback.Status = feedbackVm.Status;
+            feedback.CreatedDate = DateTime.Now;
         }
     }
 }

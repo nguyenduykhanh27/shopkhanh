@@ -1,4 +1,13 @@
-﻿
+﻿@using Microsoft.AspNet.Identity;
+<link href="~/Assets/client/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Assets/client/css/animate.css" rel="stylesheet">
+<link href="~/Assets/client/css/owl.carousel.css" rel="stylesheet">
+<link href="~/Assets/client/css/cloud-zoom.css" rel="stylesheet">
+<link href="~/Assets/client/css/style.css" rel="stylesheet">
+<link href="~/Assets/client/css/responsive.css" rel="stylesheet">
+<link href="~/Assets/client/css/custom.css" rel="stylesheet" />
+
+
 <div class="topbar">
     <div class="container">
         <div class="topbar-left">
@@ -8,28 +17,81 @@
             </ul>
         </div>
         <div class="topbar-right">
-            <ul class="topbar-nav clearfix">
-                <li><a href="/dang-nhap.html" class="login">Đăng nhập</a></li>
-                <li><a href="/dang-ky.html" class="login">Đăng ký</a></li>
-                <li class="dropdown">
-                    <a href="#" class="account dropdown-toggle" data-toggle="dropdown">Tài khoản của  bạn</a>
-                 
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="currency dropdown-toggle" data-toggle="dropdown">Tiền tệ</a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#">Euro</a></li>
-                        <li><a href="#">US Dollar</a></li>
+            @using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { @id = "frmLogout" }))
+            {
+                if (Request.IsAuthenticated)
+                {
+
+                    @Html.AntiForgeryToken()
+                    <ul class="topbar-nav clearfix">
+                    
+                        <li class="dropdown">
+                            <a href="/tai-khoan.html" class="#" data-toggle="dropdown">Xin chào:@User.Identity.GetUserName()</a>
+                        </li>
+                        <li><a href="#" id="btnLogout">Thoát</a></li>
                     </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="language dropdown-toggle" data-toggle="dropdown"><img src="~/Assets/client/images/flag-us.png" alt=""> English</a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#"><img src="~/Assets/client/images/flag-us.png" alt=""> &nbsp;English</a></li>
-                        <li><a href="#"><img src="~/Assets/client/images/flag-spain.png" alt=""> &nbsp;Spanish</a></li>
+
+
+                }
+                else
+                {
+                    <ul class="topbar-nav clearfix">
+                        <li><a href="/dang-nhap.html" class="login">Đăng nhập</a></li>
+                        <li><a href="/dang-ky.html" class="login">Đăng ký</a></li>
                     </ul>
-                </li>
-            </ul>
+                }
+            }
         </div>
     </div><!-- /.container -->
 </div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="~/Assets/client/js/bootstrap.min.js"></script>
+<script src="~/Assets/client/js/cloud-zoom.js"></script>;
+<script type="text/javascript">
+    $(document).ready(function () {
+        /* special-offer slider */
+        $("#special-offer .owl").owlCarousel({
+            autoPlay: false,
+            items: 1,
+            itemsDesktop: [1199, 1],
+            itemsDesktopSmall: [991, 1],
+            itemsTablet: [767, 2],
+            itemsMobile: [480, 1],
+            slideSpeed: 3000,
+            paginationSpeed: 3000,
+            rewindSpeed: 3000,
+            navigation: true,
+            stopOnHover: true,
+            pagination: false,
+            scrollPerPage: true,
+        });
+        /* featured-products slider */
+        $("#featured-products .owl").owlCarousel({
+            autoPlay: false,
+            items: 4,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [991, 2],
+            itemsTablet: [767, 2],
+            itemsMobile: [480, 1],
+            slideSpeed: 3000,
+            paginationSpeed: 3000,
+            rewindSpeed: 3000,
+            navigation: true,
+            stopOnHover: true,
+            pagination: false,
+            scrollPerPage: true,
+        });
+        /* .thumbnail-container product image slider */
+        $('.thumbnail-container .bxslider').bxSlider({
+            slideWidth: 94,
+            slideMargin: 5,
+            minSlides: 4,
+            maxSlides: 4,
+            pager: false,
+            speed: 500,
+            pause: 3000
+        });
+    });
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk3Eeu6MXm1Y6qil2hO6j89kckY5nnSTo"></script>
+<script src="~/Assets/client/js/common.js"></script>

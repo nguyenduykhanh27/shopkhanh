@@ -4,6 +4,8 @@
     angular.module('tedushop',
         ['tedushop.products',
          'tedushop.product_categories',
+         'tedushop.post_categories',
+         'tedushop.page',
          'tedushop.common'])
         .config(config)
         .config(configAuthentication);

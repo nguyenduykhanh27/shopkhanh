@@ -98,6 +98,8 @@ namespace ShopKhanh.Web.Api
                 }
                 else
                 {
+
+
                     var newProductCategory = new ProductCategory();
                     newProductCategory.UpdateProductCategory(productCategoryVm);
                     newProductCategory.CreatedDate = DateTime.Now;

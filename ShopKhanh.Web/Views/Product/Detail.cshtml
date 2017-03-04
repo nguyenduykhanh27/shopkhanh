@@ -117,7 +117,7 @@
                                             <div class="rating-box">
                                                 <div style="width:87%" class="rating"></div>
                                             </div>
-                                            <span class="amount"><a href="#">1 Review(s)</a></span>
+                                            <span class="amount"> Lượt xem:<a href="#">@Model.ViewCount</a></span>
                                         </div>
                                         <div class="price-box">
                                             <span id="product-price-11" class="regular-price">
@@ -127,12 +127,31 @@
                                         <div class="desc std">
                                             Mô tả sản phẩm : @Html.Raw(Model.Description)
                                         </div>
+                                        <div class="form-group">
+                                            <span>Tags:</span>
+                                            <ul class="tagslist">
+                                                @foreach (var tag in (IEnumerable<ShopKhanh.Web.Models.TagViewModel>)ViewBag.Tags)
+                                                {
+                                                    <li><a href="/tag/@(tag.ID).html">@(tag.Name),</a></li>
+                                                }
+
+                                            </ul>
+                                        
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="form-group">
+                                            <label class="">Còn: @Model.Quantity sản phẩm tồn kho</label>
+                                         
+                                        </div>
+                                     
                                         <div class="actions">
                                             <div class="actions-inner">
                                                 <button class="btn btn-danger" title="Add to Cart" type="button" href="/them-gio-hang/@Model.ID">Thêm vào giỏ hàng</button>
                                              
                                             </div>
+
                                         </div>
+
                                     </div>
                                 </div>
                             </div>

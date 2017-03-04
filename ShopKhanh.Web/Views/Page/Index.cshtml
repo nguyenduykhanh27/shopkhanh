@@ -1,0 +1,23 @@
+﻿@model ShopKhanh.Web.Models.PageViewModel
+@{
+    ViewBag.Title ="";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+
+<div class="col-sm-9">
+    <div class="blog-detail blog-list">
+        <div class="blog-image"><img src="~/Assets/client/images/blog/blog-09.jpg" class="img-responsive" alt=""></div>
+        <div class="item">
+            <div class="item-inner">
+                <h2 class="product-name"><a title="" href="#">@Model.Name</a></h2>
+                <div class="desc">
+                  @Html.Raw(Model.Content)
+                </div>
+
+            </div>
+        </div>
+        <hr>
+
+        <br>
+    </div>
+</div>

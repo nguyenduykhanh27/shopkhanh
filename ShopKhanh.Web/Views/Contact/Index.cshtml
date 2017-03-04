@@ -1,0 +1,133 @@
+﻿@model ShopKhanh.Web.Models.FeedbackViewModel
+@using BotDetect.Web.Mvc;
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+<link href="~/Assets/client/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Assets/client/css/animate.css" rel="stylesheet">
+<link href="~/Assets/client/css/owl.carousel.css" rel="stylesheet">
+<link href="~/Assets/client/css/cloud-zoom.css" rel="stylesheet">
+<link href="~/Assets/client/css/style.css" rel="stylesheet">
+<link href="~/Assets/client/css/responsive.css" rel="stylesheet">
+<link href="~/Assets/client/css/custom.css" rel="stylesheet" />
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl" rel="stylesheet" type="text/css" />
+<input type="hidden" id="hidAddress" value="@Model.ContactDetail.Name<br />Điện thoại:@Model.ContactDetail.Phone <br>Địa chỉ: @Model.ContactDetail.Address" />
+<input type="hidden" id="hidLat" value="@Model.ContactDetail.Lat" />
+<input type="hidden" id="hidLng" value="@Model.ContactDetail.Lng" />
+<input type="hidden" id="hidName" value="@Model.ContactDetail.Name" />
+
+<style>
+    /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+    #map {
+        height: 600px;
+    }
+</style>
+
+
+<div class="col-sm-9">
+    <div class="blog-detail blog-list">
+        <div class="contact_right">
+            <h3>Thông tin liên hệ</h3>
+            <address class="address">
+                <p>@Model.ContactDetail.Address</p>
+                <dl>
+                    <dt> </dt>
+                    <dd>Điện thoại:<span> @Model.ContactDetail.Phone</span></dd>
+                    <dd>E-mail:&nbsp; <a href="mailto:@(Model.ContactDetail.Email)">@(Model.ContactDetail.Email)</a></dd>
+                </dl>
+            </address>
+            <div class="clearfix"></div>
+            <div id="map"></div>
+        </div>
+    </div>
+    @using (Html.BeginForm("SendFeedback", "Contact", FormMethod.Post))
+    {
+        if (ViewData["SuccessMsg"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                <strong>Chúc mừng bạn! </strong> gửi phản hồi thành công.
+                <br />Chúng tôi sẽ liên hệ lại sớm nhất có thể.
+            </div>
+        }
+        @Html.ValidationSummary(false, "", new { @class = "error" })
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Name, new { @class= "form-control input-md" })
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control input-md" })
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="form-group">
+                    @Html.TextAreaFor(model => model.Message, new { @class= "form-control" ,rows=5})
+                </div>
+            </div>
+        </div>
+        
+          MvcCaptcha contactCaptcha = new MvcCaptcha("contactCaptcha");
+            @Html.Captcha(contactCaptcha)
+            @Html.TextBox("CaptchaCode") 
+            <input type="submit" class="btn btn-default btn-lg" value="Gửi đi" />
+            
+    }
+
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="~/Assets/client/js/bootstrap.min.js"></script>
+<script src="~/Assets/client/js/cloud-zoom.js"></script>;
+<script type="text/javascript">
+    $(document).ready(function () {
+        /* special-offer slider */
+        $("#special-offer .owl").owlCarousel({
+            autoPlay: false,
+            items: 1,
+            itemsDesktop: [1199, 1],
+            itemsDesktopSmall: [991, 1],
+            itemsTablet: [767, 2],
+            itemsMobile: [480, 1],
+            slideSpeed: 3000,
+            paginationSpeed: 3000,
+            rewindSpeed: 3000,
+            navigation: true,
+            stopOnHover: true,
+            pagination: false,
+            scrollPerPage: true,
+        });
+        /* featured-products slider */
+        $("#featured-products .owl").owlCarousel({
+            autoPlay: false,
+            items: 4,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [991, 2],
+            itemsTablet: [767, 2],
+            itemsMobile: [480, 1],
+            slideSpeed: 3000,
+            paginationSpeed: 3000,
+            rewindSpeed: 3000,
+            navigation: true,
+            stopOnHover: true,
+            pagination: false,
+            scrollPerPage: true,
+        });
+        /* .thumbnail-container product image slider */
+        $('.thumbnail-container .bxslider').bxSlider({
+            slideWidth: 94,
+            slideMargin: 5,
+            minSlides: 4,
+            maxSlides: 4,
+            pager: false,
+            speed: 500,
+            pause: 3000
+        });
+    });
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk3Eeu6MXm1Y6qil2hO6j89kckY5nnSTo"></script>
+<script type="text/javascript" src="~/Assets/client/js/controllers/contact.js"></script>

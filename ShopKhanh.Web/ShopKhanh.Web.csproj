@@ -62,6 +62,14 @@
       <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="BotDetect, Version=4.1.0.0, Culture=neutral, PublicKeyToken=74616036388b765f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Captcha.4.1.0\lib\net45\BotDetect.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BotDetect.Web.Mvc, Version=4.1.0.0, Culture=neutral, PublicKeyToken=74616036388b765f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Captcha.4.1.0\lib\net45\BotDetect.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="CKFinder, Version=2.6.0.2792, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\admin\Desktop\New folder (2)\ckfinder\bin\Release\CKFinder.dll</HintPath>
@@ -124,6 +132,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -194,6 +206,7 @@
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\HomeController.cs" />
+    <Compile Include="Api\PageController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="Api\ProductController.cs" />
@@ -207,7 +220,9 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -217,14 +232,19 @@
     <Compile Include="infrastructure\Core\PaginationSet.cs" />
     <Compile Include="infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMappperConfiguration.cs" />
+    <Compile Include="Models\ContactDetailViewModel.cs" />
+    <Compile Include="Models\FeedbackViewModel.cs" />
     <Compile Include="Models\FooterViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\PageViewModel.cs" />
     <Compile Include="Models\PostCategoryViewModel.cs" />
     <Compile Include="Models\PostTagViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModel.cs" />
     <Compile Include="Models\ProductTagViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\SlideViewModel.cs" />
     <Compile Include="Models\TagViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -236,6 +256,27 @@
     <Content Include="app\components\home\rootController.js" />
     <Content Include="app\components\login\loginController.js" />
     <Content Include="app\components\login\loginView.html" />
+    <Content Include="app\components\page\page.module.js" />
+    <Content Include="app\components\page\pageAddController.js" />
+    <Content Include="app\components\page\pageAddView.html" />
+    <Content Include="app\components\page\pageEditController.js" />
+    <Content Include="app\components\page\pageEditView.html" />
+    <Content Include="app\components\page\pageListController.js" />
+    <Content Include="app\components\page\pageListView.html" />
+    <Content Include="app\components\posts\postEditController.js" />
+    <Content Include="app\components\posts\postEditView.html" />
+    <Content Include="app\components\posts\postListController.js" />
+    <Content Include="app\components\posts\postListView.html" />
+    <Content Include="app\components\posts\posts.module.js" />
+    <Content Include="app\components\posts\postAddController.js" />
+    <Content Include="app\components\posts\productAddView.html" />
+    <Content Include="app\components\post_categories\postCategories.module.js" />
+    <Content Include="app\components\post_categories\postCategoryAddController.js" />
+    <Content Include="app\components\post_categories\postCategoryAddView.html" />
+    <Content Include="app\components\post_categories\postCategoryEditController.js" />
+    <Content Include="app\components\post_categories\postCategoryEditView.html" />
+    <Content Include="app\components\post_categories\postCategoryListController.js" />
+    <Content Include="app\components\post_categories\postCategoryListView.html" />
     <Content Include="app\components\products\productAddController.js" />
     <Content Include="app\components\products\productAddView.html" />
     <Content Include="app\components\products\productEditController.js" />
@@ -4817,6 +4858,7 @@
     <Content Include="Assets\client\css\animate.css" />
     <Content Include="Assets\client\css\bootstrap.min.css" />
     <Content Include="Assets\client\css\cloud-zoom.css" />
+    <Content Include="Assets\client\css\custom.css" />
     <Content Include="Assets\client\css\grabbing.html" />
     <Content Include="Assets\client\css\images\bx_loader.html" />
     <Content Include="Assets\client\css\images\controls.html" />
@@ -4904,11 +4946,14 @@
     <Content Include="Assets\client\js\bootstrap.min.js" />
     <Content Include="Assets\client\js\cloud-zoom.js" />
     <Content Include="Assets\client\js\common.js" />
+    <Content Include="Assets\client\js\controllers\contact.js" />
     <Content Include="Assets\client\js\jquery-ui.min.js" />
     <Content Include="Assets\client\js\jquery.bxslider.min.js" />
     <Content Include="Assets\client\js\jquery.nivo.slider.pack.js" />
     <Content Include="Assets\client\js\main.js" />
     <Content Include="Assets\client\js\owl.carousel.min.js" />
+    <Content Include="Assets\client\template\contact_template.html" />
+    <Content Include="Assets\client\template\newuser.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Libs\CKFinder.dll" />
@@ -5157,7 +5202,9 @@
     <Content Include="ConnectionString.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="AppSettings.config" />
+    <Content Include="AppSettings.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Assets\client\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Assets\client\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Assets\client\fonts\glyphicons-halflings-regular.woff" />
@@ -5213,6 +5260,11 @@
     <Content Include="Views\Product\Category.cshtml" />
     <Content Include="Views\Product\Search.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\Product\ListByTag.cshtml" />
+    <Content Include="Views\Page\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShopKhanh.Common\ShopKhanh.Common.csproj">
