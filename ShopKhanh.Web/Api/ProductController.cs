@@ -30,6 +30,7 @@ namespace ShopKhanh.Web.Api
 
         [Route("getallparents")]
         [HttpGet]
+        [Authorize(Roles = "ViewProduct")]
         public HttpResponseMessage GetAll(HttpRequestMessage request)
         {
             return CreateHttpResponse(request, () =>
@@ -44,6 +45,7 @@ namespace ShopKhanh.Web.Api
         }
         [Route("getbyid/{id:int}")]
         [HttpGet]
+        [Authorize(Roles = "ViewProduct")]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
         {
             return CreateHttpResponse(request, () =>
@@ -60,6 +62,7 @@ namespace ShopKhanh.Web.Api
 
         [Route("getall")]
         [HttpGet]
+        [Authorize(Roles = "ViewProduct")]
         public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
         {
             return CreateHttpResponse(request, () =>
@@ -88,6 +91,7 @@ namespace ShopKhanh.Web.Api
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]
+        [Authorize(Roles = "AddProduct")]
         public HttpResponseMessage Create(HttpRequestMessage request, ProductViewModel productCategoryVm)
         {
             return CreateHttpResponse(request, () =>
@@ -117,6 +121,7 @@ namespace ShopKhanh.Web.Api
         [Route("update")]
         [HttpPut]
         [AllowAnonymous]
+        [Authorize(Roles = "UpdateProduct")]
         public HttpResponseMessage Update(HttpRequestMessage request, ProductViewModel productVm)
         {
             return CreateHttpResponse(request, () =>
@@ -145,6 +150,7 @@ namespace ShopKhanh.Web.Api
         }
 
         [Route("delete")]
+        [Authorize(Roles = "DeleteProduct")]
         [HttpDelete]
         [AllowAnonymous]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
@@ -171,6 +177,7 @@ namespace ShopKhanh.Web.Api
         [Route("deletemulti")]
         [HttpDelete]
         [AllowAnonymous]
+        [Authorize(Roles = "DeleteProduct")]
         public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedProducts)
         {
             return CreateHttpResponse(request, () =>

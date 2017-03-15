@@ -18,6 +18,9 @@ namespace ShopKhanh.Web.Mappings
             Mapper.CreateMap<Slide, SlideViewModel>();
             Mapper.CreateMap<Page, PageViewModel>();
             Mapper.CreateMap<ContactDetail, ContactDetailViewModel>();
+            Mapper.CreateMap<ApplicationGroup, ApplicationGroupViewModel>();
+            Mapper.CreateMap<ApplicationRole, ApplicationRoleViewModel>();
+            Mapper.CreateMap<ApplicationUser, ApplicationUserViewModel>();
         }
     }
 }

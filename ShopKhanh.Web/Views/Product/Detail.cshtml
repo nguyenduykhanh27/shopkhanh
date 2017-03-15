@@ -5,67 +5,21 @@
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
 <link href="~/Assets/client/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Assets/client/css/nivo-slider.css" rel="stylesheet">
 <link href="~/Assets/client/css/animate.css" rel="stylesheet">
 <link href="~/Assets/client/css/owl.carousel.css" rel="stylesheet">
-<link href="~/Assets/client/css/jquery.bxslider.css" rel="stylesheet">
-<link href="~/Assets/client/css/cloud-zoom.css" rel="stylesheet">
 <link href="~/Assets/client/css/style.css" rel="stylesheet">
 <link href="~/Assets/client/css/responsive.css" rel="stylesheet">
+<link href="~/Assets/client/css/custom.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link href="~/Assets/admin/libs/jquery-ui/themes/smoothness/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/Assets/client/font-awesome-4.6.3/css/font-awesome.css" rel="stylesheet" />
 
 
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="~/Assets/client/js/bootstrap.min.js"></script>
-
-<script src="~/Assets/client/js/cloud-zoom.js"></script>;
-<script src="~/Assets/client/js/owl.carousel.min.js"></script>
-<script src="~/Assets/client/js/jquery.bxslider.min.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        /* special-offer slider */
-        $("#special-offer .owl").owlCarousel({
-            autoPlay: false,
-            items: 1,
-            itemsDesktop: [1199, 1],
-            itemsDesktopSmall: [991, 1],
-            itemsTablet: [767, 2],
-            itemsMobile: [480, 1],
-            slideSpeed: 3000,
-            paginationSpeed: 3000,
-            rewindSpeed: 3000,
-            navigation: true,
-            stopOnHover: true,
-            pagination: false,
-            scrollPerPage: true,
-        });
-        /* featured-products slider */
-        $("#featured-products .owl").owlCarousel({
-            autoPlay: false,
-            items: 4,
-            itemsDesktop: [1199, 3],
-            itemsDesktopSmall: [991, 2],
-            itemsTablet: [767, 2],
-            itemsMobile: [480, 1],
-            slideSpeed: 3000,
-            paginationSpeed: 3000,
-            rewindSpeed: 3000,
-            navigation: true,
-            stopOnHover: true,
-            pagination: false,
-            scrollPerPage: true,
-        });
-        /* .thumbnail-container product image slider */
-        $('.thumbnail-container .bxslider').bxSlider({
-            slideWidth: 94,
-            slideMargin: 5,
-            minSlides: 4,
-            maxSlides: 4,
-            pager: false,
-            speed: 500,
-            pause: 3000
-        });
-    });
-</script>
 <div class="main">
     <div class="container">
         <div class="row">
@@ -117,7 +71,7 @@
                                             <div class="rating-box">
                                                 <div style="width:87%" class="rating"></div>
                                             </div>
-                                            <span class="amount"> Lượt xem:<a href="#">@Model.ViewCount</a></span>
+                                            
                                         </div>
                                         <div class="price-box">
                                             <span id="product-price-11" class="regular-price">
@@ -146,7 +100,7 @@
                                      
                                         <div class="actions">
                                             <div class="actions-inner">
-                                                <button class="btn btn-danger" title="Add to Cart" type="button" href="/them-gio-hang/@Model.ID">Thêm vào giỏ hàng</button>
+                                                <button title="Thêm vào giỏ hàng" type="button" href="#" class="btnAddToCart btn btn-info" data-id="@Model.ID">Thêm vào giỏ hàng</button>
                                              
                                             </div>
 
@@ -193,8 +147,7 @@
                                             </a>
                                             <div class="box-hover">
                                                 <ul class="add-to-links">
-                                                    <li><a href="/@(product.Alias).p-@(product.ID).html" class="link-quickview">Xem chi tiết</a></li>
-                                                    
+                                                    <li><a href="/@(product.Alias).p-@(product.ID).html" class="link-quickview">Xem chi tiết</a></li>                                    
                                                     <li><a href="#" class="link-cart">Thêm vào giỏ hàng</a></li>
                                                 </ul>
                                             </div>
@@ -220,7 +173,7 @@
                                                 <div class="rating-box">
                                                     <div class="rating" style="width:67%"></div>
                                                 </div>
-                                                <span class="amount"><a href="#">3 Review(s)</a></span>
+                                             
                                             </div>
                                         </div>
                                     </div>
@@ -238,3 +191,57 @@
 
 
 
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="~/Assets/client/js/bootstrap.min.js"></script>
+
+<script src="~/Assets/client/js/cloud-zoom.js"></script>;
+<script src="~/Assets/client/js/owl.carousel.min.js"></script>
+<script src="~/Assets/client/js/jquery.bxslider.min.js"></script>
+<script src="~/Assets/admin/libs/mustache/mustache.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        /* special-offer slider */
+        $("#special-offer .owl").owlCarousel({
+            autoPlay: false,
+            items: 1,
+            itemsDesktop: [1199, 1],
+            itemsDesktopSmall: [991, 1],
+            itemsTablet: [767, 2],
+            itemsMobile: [480, 1],
+            slideSpeed: 3000,
+            paginationSpeed: 3000,
+            rewindSpeed: 3000,
+            navigation: true,
+            stopOnHover: true,
+            pagination: false,
+            scrollPerPage: true,
+        });
+        /* featured-products slider */
+        $("#featured-products .owl").owlCarousel({
+            autoPlay: false,
+            items: 4,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [991, 2],
+            itemsTablet: [767, 2],
+            itemsMobile: [480, 1],
+            slideSpeed: 3000,
+            paginationSpeed: 3000,
+            rewindSpeed: 3000,
+            navigation: true,
+            stopOnHover: true,
+            pagination: false,
+            scrollPerPage: true,
+        });
+        /* .thumbnail-container product image slider */
+        $('.thumbnail-container .bxslider').bxSlider({
+            slideWidth: 94,
+            slideMargin: 5,
+            minSlides: 4,
+            maxSlides: 4,
+            pager: false,
+            speed: 500,
+            pause: 3000
+        });
+    });
+</script>
+<script src="~/Assets/client/js/controllers/shoppingCart.js"></script>

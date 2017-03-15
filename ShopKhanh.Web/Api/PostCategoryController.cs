@@ -89,27 +89,24 @@ namespace ShopKhanh.Web.Api
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage Create(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
+        public HttpResponseMessage Create(HttpRequestMessage request, PostCategoryViewModel postVm)
         {
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
-
                 if (!ModelState.IsValid)
                 {
                     response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
-                    
-
-                    var newPostCategory = new PostCategory();
-                    newPostCategory.UpdatePostCategory(postCategoryVm);
-                    newPostCategory.CreatedDate = DateTime.Now;
-                    _postCategoryService.Add(newPostCategory);
+                    var newPost = new PostCategory();
+                    newPost.UpdatePostCategory(postVm);
+                    newPost.CreatedDate = DateTime.Now;
+                    _postCategoryService.Add(newPost);
                     _postCategoryService.Save();
 
-                    var responseData = Mapper.Map<PostCategory, PostViewModel>(newPostCategory);
+                    var responseData = Mapper.Map<PostCategory, PostCategoryViewModel>(newPost);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 

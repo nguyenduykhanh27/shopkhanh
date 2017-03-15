@@ -4,65 +4,79 @@ using ShopKhanh.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ShopKhanh.Service
 {
     public interface IPostService
     {
-        void Add(Post post);
+        Post Add(Post post);
 
         void Update(Post post);
 
-        void Delete(int id);
+        Post Delete(int id);
 
         IEnumerable<Post> GetAll();
+        IEnumerable<Post> GetAll(string keyword);
 
-        IEnumerable<Post> GetAllPaging(int page, int pagesize, out int totalRow);
-        IEnumerable<Post> GetAllByCategoryPaging(int CategoryId,int page, int pagesize, out int totalRow);
+        IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow);
+
+
         Post GetById(int id);
 
-        IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pagesize, out int totalRow);
+        IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
 
-        void SaveChanges();
+        IEnumerable<Post> PostTop(int top);
+        void Save();
     }
 
     public class PostService : IPostService
     {
         IPostRepository _postRepository;
         IUnitOfWork _unitOfWork;
-        public PostService(IPostRepository postRepository,IUnitOfWork unitOfWork)
+
+        public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork)
         {
             this._postRepository = postRepository;
             this._unitOfWork = unitOfWork;
         }
-        public void Add(Post post)
+
+        public Post Add(Post post)
         {
-            _postRepository.Add(post);
+           return _postRepository.Add(post);
         }
 
-        public void Delete(int id)
+        public Post Delete(int id)
         {
-            _postRepository.Delete(id);
+            return _postRepository.Delete(id);
         }
 
         public IEnumerable<Post> GetAll()
         {
-            return _postRepository.GetAll(new string[] { "PostCategory" });
+            return _postRepository.GetAll();
         }
 
-        public IEnumerable<Post> GetAllByCategoryPaging(int CategoryId, int page, int pagesize, out int totalRow)
+        public IEnumerable<Post> GetAll(string keyword)
         {
-            return _postRepository.GetMultiPaging(x => x.Status && x.CategoryID == CategoryId, out totalRow, page, pagesize,new string[] { "PostCategory"});
+            if (!string.IsNullOrEmpty(keyword))
+                return _postRepository.GetMulti(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
+            else
+                return _postRepository.GetAll();
         }
 
-        public IEnumerable<Post> GetAllByTagPaging(string tag,int page, int pagesize, out int totalRow)
+    
+
+        public IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
         {
-            return _postRepository.GetAllByTag(tag,page,pagesize, out totalRow);
+            //TODO: Select all post by tag
+            return _postRepository.GetAllByTag(tag, page, pageSize, out totalRow);
+
         }
 
-        public IEnumerable<Post> GetAllPaging(int page, int pagesize, out int totalRow)
+        public IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow)
         {
-            return _postRepository.GetMultiPaging(x => x.Status, out totalRow, page, pagesize);
+            return _postRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
         }
 
         public Post GetById(int id)
@@ -70,7 +84,12 @@ namespace ShopKhanh.Service
             return _postRepository.GetSingleById(id);
         }
 
-        public void SaveChanges()
+        public IEnumerable<Post> PostTop(int top)
+        {
+            return _postRepository.GetMulti(x => x.Status == true).OrderByDescending(x => x.CreatedDate).Take(top);
+        }
+
+        public void Save()
         {
             _unitOfWork.Commit();
         }
@@ -80,4 +99,6 @@ namespace ShopKhanh.Service
             _postRepository.Update(post);
         }
     }
+
+
 }

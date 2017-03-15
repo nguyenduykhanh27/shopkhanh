@@ -5,6 +5,7 @@ using System.Web;
 
 namespace ShopKhanh.Web.Models
 {
+    [Serializable]
     public class ProductViewModel
     {
         
@@ -58,6 +59,7 @@ namespace ShopKhanh.Web.Models
         public string Tags { set; get; }
 
         public int Quantity { set; get; }
+        public decimal OriginalPrice { set; get; }
         public virtual ProductCategoryViewModel ProductCategory { set; get; }
     }
 }

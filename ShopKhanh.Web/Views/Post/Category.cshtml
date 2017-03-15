@@ -1,0 +1,148 @@
+﻿@model  IEnumerable<ShopKhanh.Web.Models.PostCategoryViewModel>
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/LayoutsPost.cshtml";
+}
+
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="block block-layered-nav">
+                    <div class="block-content">
+                        <h2>Danh mục tin tức</h2>
+                        <ol>
+                            @foreach (var postcategory in Model.Where(x => x.ParentID == null))
+                            {
+                                var url = "/" + postcategory.Alias + ".pc-" + postcategory.ID + ".html";
+                                var childPostCategories = Model.Where(x => x.ParentID == postcategory.ID);
+                                <li>
+                                    <a href="@url">@postcategory.Name</a>
+                                    @if (childPostCategories.Count() > 0)
+                                    {
+                                        <div class="wrap-popup">
+                                            <div class="popup">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <ul class="nav">
+                                                            @foreach (var childPostCategory in childPostCategories)
+                                                            {
+                                                                var childUrl = "/" + childPostCategory.Alias + ".pc-" + childPostCategory.ID + ".html";
+                                                                <li><a href="@childUrl">@childPostCategory.Name</a></li>
+                                                            }
+
+                                                        </ul>
+                                                    </div>
+
+
+                                                </div>
+                                                <br>
+
+                                            </div>
+                                        </div>
+                                    }
+
+                                </li>
+                            }
+                        </ol>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="title-group"><h2>Recent post</h2></div>
+                    <div id="recent-post" class="owl-container">
+                        <div class="owl">
+                            <div class='sepecialoffer-item item'>
+                                <div class="item-inner first">
+                                    <div class="images-container">
+                                        <a href="#" title="Demonstraverunt lectores" class="product-image">
+                                            <img src="~/Assets/client/images/blog/blog-sm-01.jpg" alt="Demonstraverunt lectores" />
+                                        </a>
+                                    </div>
+                                    <div class="des-container">
+                                        <h2 class="product-name"><a href="#" title="Demonstraverunt lectores">Demonstraverunt lectores</a></h2>
+                                    </div>
+                                </div>
+                                <div class="item-inner">
+                                    <div class="images-container">
+                                        <a href="#" title="Accumsan elit " class="product-image">
+                                            <img src="~/Assets/client/images/blog/blog-sm-02.jpg" alt="Accumsan elit " />
+                                        </a>
+                                    </div>
+                                    <div class="des-container">
+                                        <h2 class="product-name"><a href="#" title="Accumsan elit ">Accumsan elit </a></h2>
+                                    </div>
+                                </div>
+                                <div class="item-inner">
+                                    <div class="images-container">
+                                        <a href="#" title="Nunc facilisis" class="product-image">
+                                            <img src="~/Assets/client/images/blog/blog-sm-03.jpg" alt="Nunc facilisis" />
+                                        </a>
+                                    </div>
+                                    <div class="des-container">
+                                        <h2 class="product-name"><a href="#" title="Nunc facilisis">Nunc facilisis</a></h2>
+                                    </div>
+                                </div>
+                                <div class="item-inner last">
+                                    <div class="images-container">
+                                        <a href="#" title="Fusce aliquam" class="product-image">
+                                            <img src="~/Assets/client/images/blog/blog-sm-04.jpg" alt="Fusce aliquam" />
+                                        </a>
+                                    </div>
+                                    <div class="des-container">
+                                        <h2 class="product-name"><a href="#" title="Fusce aliquam">Fusce aliquam</a></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='sepecialoffer-item item'>
+                                <div class="item-inner first">
+                                    <div class="images-container">
+                                        <a href="#" title="Demonstraverunt lectores" class="product-image">
+                                            <img src="~/Assets/client/images/blog/blog-sm-01.jpg" alt="Demonstraverunt lectores" />
+                                        </a>
+                                    </div>
+                                    <div class="des-container">
+                                        <h2 class="product-name"><a href="#" title="Demonstraverunt lectores">Demonstraverunt lectores</a></h2>
+                                    </div>
+                                </div>
+                                <div class="item-inner">
+                                    <div class="images-container">
+                                        <a href="#" title="Accumsan elit " class="product-image">
+                                            <img src="~/Assets/client/images/blog/blog-sm-02.jpg" alt="Accumsan elit " />
+                                        </a>
+                                    </div>
+                                    <div class="des-container">
+                                        <h2 class="product-name"><a href="#" title="Accumsan elit ">Accumsan elit </a></h2>
+                                    </div>
+                                </div>
+                                <div class="item-inner">
+                                    <div class="images-container">
+                                        <a href="#" title="Nunc facilisis" class="product-image">
+                                            <img src="~/Assets/client/images/blog/blog-sm-03.jpg" alt="Nunc facilisis" />
+                                        </a>
+                                    </div>
+                                    <div class="des-container">
+                                        <h2 class="product-name"><a href="#" title="Nunc facilisis">Nunc facilisis</a></h2>
+                                    </div>
+                                </div>
+                                <div class="item-inner last">
+                                    <div class="images-container">
+                                        <a href="#" title="Fusce aliquam" class="product-image">
+                                            <img src="~/Assets/client/images/blog/blog-sm-04.jpg" alt="Fusce aliquam" />
+                                        </a>
+                                    </div>
+                                    <div class="des-container">
+                                        <h2 class="product-name"><a href="#" title="Fusce aliquam">Fusce aliquam</a></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.owl-container -->
+                </div><!-- /.block - Recent post -->           
+            </div>
+            <div class="col-sm-9">
+                @{Html.RenderAction("Index", "Post");}
+                </div>
+            </div>
+    </div>
+</div><!-- /.main -->

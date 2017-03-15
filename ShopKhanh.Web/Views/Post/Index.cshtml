@@ -1,0 +1,54 @@
+﻿@model ShopKhanh.Web.Models.HomeViewModel
+
+
+
+    <ol id="products-list" class="blog-list">
+        <li class="item">
+            <div class="item-inner">
+                @foreach (var post in Model.NewPost)
+                {
+                    var url = "/" + post.Alias + ".p-" + post.ID + ".html";
+                    <div class="row">
+
+                        <div class="col-sm-5">
+                            <div class="images-container">
+                                <a class="product-image" title="Fusce aliquam" href="#" rel="author"><img alt="Fusce aliquam" src="@post.Image"></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <h2 class="product-name"><a title="" href="#">@post.Name</a></h2>
+                            <div class="ratings">
+                                <div class="rating-box">
+                                    <div style="width:67%" class="rating"></div>
+                                </div>
+
+                            </div>
+                            <div class="blog-attr">
+                                <span>Post by <a href="#">Admin</a></span>
+                                <span class="separator">|</span>
+                                <span>@post.CreatedDate</span>
+                            </div>
+                            <div class="desc">
+                              @Html.Raw(post.Description)
+                            </div>
+                            <a href="#" class="btn btn-default btn-readmore">Xem chi tiết</a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </li>
+
+    </ol>
+    <nav>
+        <ul class="pagination">
+            <li><a href="#" aria-label="Previous">Prev</a></li>
+            <li class="divider"><span>|</span></li>
+            <li><a href="#">1</a></li>
+            <li class="divider"><span>|</span></li>
+            <li><a href="#">2</a></li>
+            <li class="divider"><span>|</span></li>
+            <li><a href="#" aria-label="Next">Next</a></li>
+        </ul>
+    </nav>
+

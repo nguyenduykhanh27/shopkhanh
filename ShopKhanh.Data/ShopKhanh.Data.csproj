@@ -68,8 +68,40 @@
     <Compile Include="Migrations\201703030352304_InitialDB.Designer.cs">
       <DependentUpon>201703030352304_InitialDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703050635027_AddCustomerId.cs" />
+    <Compile Include="Migrations\201703050635027_AddCustomerId.Designer.cs">
+      <DependentUpon>201703050635027_AddCustomerId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703051646319_AddCustomerAddress.cs" />
+    <Compile Include="Migrations\201703051646319_AddCustomerAddress.Designer.cs">
+      <DependentUpon>201703051646319_AddCustomerAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703052239359_RenameTableIdentity.cs" />
+    <Compile Include="Migrations\201703052239359_RenameTableIdentity.Designer.cs">
+      <DependentUpon>201703052239359_RenameTableIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703052308162_AddGroupUser.cs" />
+    <Compile Include="Migrations\201703052308162_AddGroupUser.Designer.cs">
+      <DependentUpon>201703052308162_AddGroupUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703052314288_AddRoleGroup.cs" />
+    <Compile Include="Migrations\201703052314288_AddRoleGroup.Designer.cs">
+      <DependentUpon>201703052314288_AddRoleGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703080034461_ChangeOrderDetail.cs" />
+    <Compile Include="Migrations\201703080034461_ChangeOrderDetail.Designer.cs">
+      <DependentUpon>201703080034461_ChangeOrderDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703090019349_RevenuesStatisticSP.cs" />
+    <Compile Include="Migrations\201703090019349_RevenuesStatisticSP.Designer.cs">
+      <DependentUpon>201703090019349_RevenuesStatisticSP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ApplicationGroupRepository.cs" />
+    <Compile Include="Repositories\ApplicationRoleGroupRepository.cs" />
+    <Compile Include="Repositories\ApplicationRoleRepository.cs" />
+    <Compile Include="Repositories\ApplicationUserGroupRepository.cs" />
     <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\FeedbackRepository.cs" />
@@ -111,6 +143,27 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201703030352304_InitialDB.resx">
       <DependentUpon>201703030352304_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703050635027_AddCustomerId.resx">
+      <DependentUpon>201703050635027_AddCustomerId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703051646319_AddCustomerAddress.resx">
+      <DependentUpon>201703051646319_AddCustomerAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703052239359_RenameTableIdentity.resx">
+      <DependentUpon>201703052239359_RenameTableIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703052308162_AddGroupUser.resx">
+      <DependentUpon>201703052308162_AddGroupUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703052314288_AddRoleGroup.resx">
+      <DependentUpon>201703052314288_AddRoleGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703080034461_ChangeOrderDetail.resx">
+      <DependentUpon>201703080034461_ChangeOrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703090019349_RevenuesStatisticSP.resx">
+      <DependentUpon>201703090019349_RevenuesStatisticSP.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

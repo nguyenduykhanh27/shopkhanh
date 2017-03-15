@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="#">
+
+    <title>Galio</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <div class="header">
+        @{Html.RenderAction("TopHeader", "Home");}
+        <div class="header-bottom">
+            <div class="container">
+                @{Html.RenderAction("Header", "Home"); }
+                <div class="row">
+                    <div class="col-md-3">
+                        @{Html.RenderAction("Category", "Home"); }
+                    </div>
+                    <div class="col-md-9">
+                        <ul class="menu clearfix visible-lg visible-md">
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><a href="/trang/gioi-thieu.html">Giới thiệu</a></li>
+                            <li><a href="/tin-tuc.html">Tin tức</a></li>
+                            <li><a href="/lien-he.html">Liên hệ</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="blog-detail.html">Blog details</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+         
+        </div><!-- /.header-bottom -->
+    </div><!-- /.header -->
+
+    <div class="breadcrumbs">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Blogs</li>
+            </ul>
+        </div>
+    </div>
+
+@RenderBody()
+
+
+
+    @{Html.RenderAction("Footer", "Home");}
+    <script src="~/Assets/admin/libs/mustache/mustache.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="~/Assets/client/js/bootstrap.min.js"></script>
+    <script src="~/Assets/client/js/jquery.nivo.slider.pack.js"></script>
+    <script src="~/Assets/client/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/client/js/main.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function(){
+                /* recent-post slider */
+                $("#recent-post .owl").owlCarousel({
+                    autoPlay : false,
+                    items : 1,
+                    itemsDesktop : [1199,1],
+                    itemsDesktopSmall : [991,1],
+                    itemsTablet: [767,2],
+                    itemsMobile : [480,1],
+                    slideSpeed : 3000,
+                    paginationSpeed : 3000,
+                    rewindSpeed : 3000,
+                    navigation : true,
+                    stopOnHover : true,
+                    pagination : false,
+                    scrollPerPage:true,
+                });
+            });
+    </script>
+</body>
+</html>

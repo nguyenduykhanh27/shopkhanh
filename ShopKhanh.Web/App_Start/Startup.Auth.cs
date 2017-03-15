@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using System.Security.Claims;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Threading.Tasks;
+using Microsoft.Owin.Security.Google;
 
 [assembly: OwinStartup(typeof(ShopKhanh.Web.App_Start.Startup))]
 
@@ -47,7 +48,7 @@ namespace ShopKhanh.Web.App_Start
                     // This is a security feature which is used when you change a password or add an external login to your account.  
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
                         validateInterval: TimeSpan.FromMinutes(30),
-                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager,DefaultAuthenticationTypes.ApplicationCookie))
                 }
             });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
@@ -60,15 +61,15 @@ namespace ShopKhanh.Web.App_Start
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "226170071188331",
+               appSecret: "2200765d181dffd2c35714b6e2a4e5f6");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "171200606707-msg0c0t815d3rjq29hft32731kceh5gq.apps.googleusercontent.com",
+                ClientSecret = "1p4wx4-a9tOBZDgPTYBFXU7p"
+            });
         }
         public class AuthorizationServerProvider : OAuthAuthorizationServerProvider
         {

@@ -32,6 +32,8 @@ namespace ShopKhanh.Service
         void increaseView(int id);
 
         void Save();
+        bool SellProduct(int productId, int quantity);
+        
     }
 
     public class ProductService : IProductService
@@ -234,6 +236,16 @@ namespace ShopKhanh.Service
         public Tag GetTag(string tagId)
         {
             return _tagRepository.GetSingleByCondution(x=>x.ID == tagId);
+        }
+        //Selling product
+
+        public bool SellProduct(int productId, int quantity)
+        {
+            var product = _productRepository.GetSingleById(productId);
+            if (product.Quantity < quantity)
+                return false;
+            product.Quantity -= quantity;
+            return true;
         }
     }
 }

@@ -3,7 +3,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
-
+<script src="~/Assets/client/js/controllers/shoppingCart.js"></script>
+<script src="~/Assets/client/js/common.js"></script>
 <div class="col-sm-9 col-right">
     <div class="featuredproductslider-container">
         <div class="title-group1"><h2>Sản phẩm mới nhất</h2></div>
@@ -24,7 +25,7 @@
                                 <div class="box-hover">
                                     <ul class="add-to-links">
                                         <li><a href="#" class="link-quickview">Xem chi tiết</a></li>
-                                        <li><a href="#" class="link-cart">Mua hàng</a></li>
+                                        <li><a href="#" class="link-cart btnAddToCart"  data-id="@product.ID">Mua hàng</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -48,7 +49,7 @@
                                     <div class="rating-box">
                                         <div class="rating" style="width:67%"></div>
                                     </div>
-                                    <span class="amount"><a href="#">3 Review(s)</a></span>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -74,15 +75,15 @@
                         <div class="item-inner">
                             <div class="images-container">
                                 <div class="product_icon">
-                                    <div class='new-icon'><span>Bán chạy</span></div>
+                                 
                                 </div>
                                 <a href="@url" title="Nunc facilisis" class="product-image">
                                     <img src="@product.Image" alt="Nunc facilisis" />
                                 </a>
                                 <div class="box-hover">
                                     <ul class="add-to-links">
-
-                                        <li><a href="#" class="link-cart">Mua hàng</a></li>
+                                        <li><a href="#" class="link-quickview">Xem chi tiết</a></li>
+                                        <li><a href="#" class="link-cart btnAddToCart"  data-id="@product.ID">Mua hàng</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -106,7 +107,7 @@
                                     <div class="rating-box">
                                         <div class="rating" style="width:67%"></div>
                                     </div>
-                                    <span class="amount"><a href="#">3 Review(s)</a></span>
+                                  
                                 </div>
                             </div>
                         </div>

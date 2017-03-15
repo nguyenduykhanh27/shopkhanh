@@ -29,7 +29,7 @@ namespace ShopKhanh.Web.infrastructure.Extensions
             postCategory.Status = postCategoryVm.Status;
 
         }
-        public static void UpdatePost(this Post post, Post postVm)
+        public static void UpdatePost(this Post post, PostViewModel postVm)
         {
             post.ID = postVm.ID;
             post.Name = postVm.Name;
@@ -39,7 +39,8 @@ namespace ShopKhanh.Web.infrastructure.Extensions
             post.Description = postVm.Description;
             post.Content = postVm.Content;
             post.HomeFlag = postVm.HomeFlag;
-            post.HomeFlag = postVm.HomeFlag;
+           
+
             post.ViewCount = postVm.ViewCount;
             post.CreatedDate = postVm.CreatedDate;
             post.CreatedBy = postVm.CreatedBy;
@@ -77,6 +78,7 @@ namespace ShopKhanh.Web.infrastructure.Extensions
             product.Status = productVm.Status;
             product.Tags = productVm.Tags;
             product.Quantity = productVm.Quantity;
+            product.OriginalPrice = productVm.OriginalPrice;
         }
         public static void UpdateProductCategory(this ProductCategory productcategory, ProductCategoryViewModel productCategoryVm)
         {
@@ -119,5 +121,44 @@ namespace ShopKhanh.Web.infrastructure.Extensions
             feedback.Status = feedbackVm.Status;
             feedback.CreatedDate = DateTime.Now;
         }
+        public static void UpdateOrder(this Order order, OrderViewModel orderVm)
+        {
+            order.CustomerName = orderVm.CustomerName;
+            order.CustomerAddress = orderVm.CustomerAddress;
+            order.CustomerEmail = orderVm.CustomerEmail;
+            order.CustomerMobile = orderVm.CustomerMobile;
+            order.CustomerMessage = orderVm.CustomerMessage;
+            order.PaymentMethod = orderVm.PaymentMethod;
+            order.CreatedDate = DateTime.Now;
+            order.CreatedBy = orderVm.CreatedBy;
+            order.PaymentStatus = orderVm.PaymentStatus;
+
+        }
+        public static void UpdateApplicationGroup(this ApplicationGroup appGroup, ApplicationGroupViewModel appGroupViewModel)
+        {
+            appGroup.ID = appGroupViewModel.ID;
+            appGroup.Name = appGroupViewModel.Name;
+        }
+
+        public static void UpdateApplicationRole(this ApplicationRole appRole, ApplicationRoleViewModel appRoleViewModel, string action = "add")
+        {
+            if (action == "update")
+                appRole.Id = appRoleViewModel.Id;
+            else
+                appRole.Id = Guid.NewGuid().ToString();
+            appRole.Name = appRoleViewModel.Name;
+            appRole.Description = appRoleViewModel.Description;
+        }
+        public static void UpdateUser(this ApplicationUser appUser, ApplicationUserViewModel appUserViewModel, string action = "add")
+        {
+
+            appUser.Id = appUserViewModel.Id;
+            appUser.FullName = appUserViewModel.FullName;
+            appUser.BirthDay = appUserViewModel.BirthDay;
+            appUser.Email = appUserViewModel.Email;
+            appUser.UserName = appUserViewModel.UserName;
+            appUser.PhoneNumber = appUserViewModel.PhoneNumber;
+        }
+
     }
 }

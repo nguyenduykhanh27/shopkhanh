@@ -39,7 +39,19 @@ namespace ShopKhanh.Web
             url: "dang-ky.html",
             defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional },
             namespaces: new string[] { "ShopKhanh.Web.Controllers" }
-    );
+         );
+            routes.MapRoute(
+           name: "Cart",
+           url: "gio-hang.html",
+           defaults: new { controller = "ShoppingCart", action = "Index", id = UrlParameter.Optional },
+           namespaces: new string[] { "ShopKhanh.Web.Controllers" }
+            );
+         routes.MapRoute(
+         name: "Checkout",
+         url: "thanh-toan.html",
+         defaults: new { controller = "ShoppingCart", action = "Checkout", id = UrlParameter.Optional },
+         namespaces: new string[] { "ShopKhanh.Web.Controllers" }
+          );
             routes.MapRoute(
                    name: "Page",
                    url: "trang/{alias}.html",
@@ -52,6 +64,15 @@ namespace ShopKhanh.Web
                  defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },
                    namespaces: new string[] { "ShopKhanh.Web.Controllers" }
           );
+            routes.MapRoute(
+            name: "Post Category",
+            url: "tin-tuc.html",
+            defaults: new { controller = "Post", action = "Category", id = UrlParameter.Optional },
+              namespaces: new string[] { "ShopKhanh.Web.Controllers" }
+           );
+           
+
+
 
             routes.MapRoute(
               name: "TagList",

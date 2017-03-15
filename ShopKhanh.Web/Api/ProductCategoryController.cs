@@ -28,6 +28,7 @@ namespace ShopKhanh.Web.Api
         #endregion
         [Route("getallparents")]
         [HttpGet]
+        [Authorize(Roles = "ViewProductCategory")]
         public HttpResponseMessage GetAll(HttpRequestMessage request)
         {
             return CreateHttpResponse(request, () =>
@@ -43,6 +44,7 @@ namespace ShopKhanh.Web.Api
 
         [Route("getall")]
         [HttpGet]
+        [Authorize(Roles = "ViewProductCategory")]
         public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
         {
             return CreateHttpResponse(request, () =>
@@ -68,7 +70,7 @@ namespace ShopKhanh.Web.Api
         }
         [Route("getbyid/{id:int}")]
         [HttpGet]
-      
+        [Authorize(Roles = "ViewProductCategory")]
         public HttpResponseMessage GetById(HttpRequestMessage request,int id)
         {
             return CreateHttpResponse(request, () =>
@@ -87,6 +89,7 @@ namespace ShopKhanh.Web.Api
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]
+        [Authorize(Roles = "AddProductCategory")]
         public HttpResponseMessage Create(HttpRequestMessage request, ProductCategoryViewModel productCategoryVm)
         {
             return CreateHttpResponse(request, () =>
@@ -117,6 +120,7 @@ namespace ShopKhanh.Web.Api
         [Route("update")]
         [HttpPut]
         [AllowAnonymous]
+        [Authorize(Roles = "UpdateProductCategory")]
         public HttpResponseMessage Update(HttpRequestMessage request, ProductCategoryViewModel productCategoryVm)
         {
             return CreateHttpResponse(request, () =>
@@ -147,6 +151,7 @@ namespace ShopKhanh.Web.Api
         [Route("delete")]
         [HttpDelete]
         [AllowAnonymous]
+        [Authorize(Roles = "DeleteProductCategory")]
         public HttpResponseMessage Delete(HttpRequestMessage request,int id)
         {
             return CreateHttpResponse(request, () =>
@@ -173,6 +178,7 @@ namespace ShopKhanh.Web.Api
         [Route("deletemulti")]
         [HttpDelete]
         [AllowAnonymous]
+        [Authorize(Roles = "DeleteProductCategory")]
         public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedProductCategories)
         {
             return CreateHttpResponse(request, () =>
